@@ -1,0 +1,120 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               10.4.12-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win64
+-- HeidiSQL Version:             10.2.0.5599
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Dumping database structure for project1
+CREATE DATABASE IF NOT EXISTS `project1` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `project1`;
+
+-- Dumping structure for table project1.artist
+CREATE TABLE IF NOT EXISTS `artist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table project1.artist: ~0 rows (approximately)
+/*!40000 ALTER TABLE `artist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `artist` ENABLE KEYS */;
+
+-- Dumping structure for table project1.creators
+CREATE TABLE IF NOT EXISTS `creators` (
+  `userID` int(11) NOT NULL,
+  `playlistID` int(11) NOT NULL,
+  PRIMARY KEY (`userID`,`playlistID`),
+  KEY `FK2_playlist` (`playlistID`),
+  CONSTRAINT `FK2_playlist` FOREIGN KEY (`playlistID`) REFERENCES `playlist` (`id`),
+  CONSTRAINT `FK__user` FOREIGN KEY (`userID`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table project1.creators: ~0 rows (approximately)
+/*!40000 ALTER TABLE `creators` DISABLE KEYS */;
+/*!40000 ALTER TABLE `creators` ENABLE KEYS */;
+
+-- Dumping structure for table project1.genre
+CREATE TABLE IF NOT EXISTS `genre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table project1.genre: ~0 rows (approximately)
+/*!40000 ALTER TABLE `genre` DISABLE KEYS */;
+/*!40000 ALTER TABLE `genre` ENABLE KEYS */;
+
+-- Dumping structure for table project1.listeners
+CREATE TABLE IF NOT EXISTS `listeners` (
+  `userID` int(11) NOT NULL,
+  `playlistID` int(11) NOT NULL,
+  PRIMARY KEY (`userID`,`playlistID`),
+  KEY `FK2_playlistID` (`playlistID`),
+  CONSTRAINT `FK1_userID` FOREIGN KEY (`userID`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK2_playlistID` FOREIGN KEY (`playlistID`) REFERENCES `playlist` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table project1.listeners: ~0 rows (approximately)
+/*!40000 ALTER TABLE `listeners` DISABLE KEYS */;
+/*!40000 ALTER TABLE `listeners` ENABLE KEYS */;
+
+-- Dumping structure for table project1.playlist
+CREATE TABLE IF NOT EXISTS `playlist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `playlist_name` varchar(50) NOT NULL DEFAULT '0',
+  `songID` int(11) NOT NULL DEFAULT 0,
+  `genreID` int(11) NOT NULL DEFAULT 0,
+  `date_created` date NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `playlist_name` (`playlist_name`),
+  KEY `FK_genreID` (`genreID`),
+  CONSTRAINT `FK_genreID` FOREIGN KEY (`genreID`) REFERENCES `genre` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table project1.playlist: ~0 rows (approximately)
+/*!40000 ALTER TABLE `playlist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `playlist` ENABLE KEYS */;
+
+-- Dumping structure for table project1.song
+CREATE TABLE IF NOT EXISTS `song` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `song_name` varchar(50) NOT NULL DEFAULT '0',
+  `genreID` int(11) NOT NULL DEFAULT 0,
+  `artistID` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `FK1_genreID` (`genreID`),
+  KEY `FK2_artistID` (`artistID`),
+  CONSTRAINT `FK1_genreID` FOREIGN KEY (`genreID`) REFERENCES `genre` (`id`),
+  CONSTRAINT `FK2_artistID` FOREIGN KEY (`artistID`) REFERENCES `artist` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table project1.song: ~0 rows (approximately)
+/*!40000 ALTER TABLE `song` DISABLE KEYS */;
+/*!40000 ALTER TABLE `song` ENABLE KEYS */;
+
+-- Dumping structure for table project1.user
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table project1.user: ~1 rows (approximately)
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`id`, `username`, `email`) VALUES
+	(1, 'gurjit', 'abcd@gmail.com');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
