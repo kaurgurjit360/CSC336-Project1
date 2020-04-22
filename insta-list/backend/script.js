@@ -8,7 +8,7 @@ var connection = mysql.createPool({
     connectionLimit: 50, //server only handles 50 SQL queries
     host: 'localhost',
     user: 'root',
-    password: 'Richmondhill1',
+    password: '',
     database: 'project1'
 });
 
