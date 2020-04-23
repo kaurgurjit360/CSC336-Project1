@@ -1,0 +1,576 @@
+[1mdiff --git a/insta-list/.gitignore b/insta-list/.gitignore[m
+[1mdeleted file mode 100644[m
+[1mindex 4d29575..0000000[m
+[1m--- a/insta-list/.gitignore[m
+[1m+++ /dev/null[m
+[36m@@ -1,23 +0,0 @@[m
+[31m-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.[m
+[31m-[m
+[31m-# dependencies[m
+[31m-/node_modules[m
+[31m-/.pnp[m
+[31m-.pnp.js[m
+[31m-[m
+[31m-# testing[m
+[31m-/coverage[m
+[31m-[m
+[31m-# production[m
+[31m-/build[m
+[31m-[m
+[31m-# misc[m
+[31m-.DS_Store[m
+[31m-.env.local[m
+[31m-.env.development.local[m
+[31m-.env.test.local[m
+[31m-.env.production.local[m
+[31m-[m
+[31m-npm-debug.log*[m
+[31m-yarn-debug.log*[m
+[31m-yarn-error.log*[m
+[1mdiff --git a/insta-list/README.md b/insta-list/README.md[m
+[1mdeleted file mode 100644[m
+[1mindex 9c40dcd..0000000[m
+[1m--- a/insta-list/README.md[m
+[1m+++ /dev/null[m
+[36m@@ -1,68 +0,0 @@[m
+[31m-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).[m
+[31m-[m
+[31m-## Available Scripts[m
+[31m-[m
+[31m-In the project directory, you can run:[m
+[31m-[m
+[31m-### `yarn start`[m
+[31m-[m
+[31m-Runs the app in the development mode.<br />[m
+[31m-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.[m
+[31m-[m
+[31m-The page will reload if you make edits.<br />[m
+[31m-You will also see any lint errors in the console.[m
+[31m-[m
+[31m-### `yarn test`[m
+[31m-[m
+[31m-Launches the test runner in the interactive watch mode.<br />[m
+[31m-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.[m
+[31m-[m
+[31m-### `yarn build`[m
+[31m-[m
+[31m-Builds the app for production to the `build` folder.<br />[m
+[31m-It correctly bundles React in production mode and optimizes the build for the best performance.[m
+[31m-[m
+[31m-The build is minified and the filenames include the hashes.<br />[m
+[31m-Your app is ready to be deployed![m
+[31m-[m
+[31m-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.[m
+[31m-[m
+[31m-### `yarn eject`[m
+[31m-[m
+[31m-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**[m
+[31m-[m
+[31m-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.[m
+[31m-[m
+[31m-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.[m
+[31m-[m
+[31m-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.[m
+[31m-[m
+[31m-## Learn More[m
+[31m-[m
+[31m-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).[m
+[31m-[m
+[31m-To learn React, check out the [React documentation](https://reactjs.org/).[m
+[31m-[m
+[31m-### Code Splitting[m
+[31m-[m
+[31m-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting[m
+[31m-[m
+[31m-### Analyzing the Bundle Size[m
+[31m-[m
+[31m-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size[m
+[31m-[m
+[31m-### Making a Progressive Web App[m
+[31m-[m
+[31m-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app[m
+[31m-[m
+[31m-### Advanced Configuration[m
+[31m-[m
+[31m-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration[m
+[31m-[m
+[31m-### Deployment[m
+[31m-[m
+[31m-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment[m
+[31m-[m
+[31m-### `yarn build` fails to minify[m
+[31m-[m
+[31m-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify[m
+[1mdiff --git a/insta-list/backend/Artists.js b/insta-list/backend/Artists.js[m
+[1mdeleted file mode 100644[m
+[1mindex e910a2f..0000000[m
+[1m--- a/insta-list/backend/Artists.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,32 +0,0 @@[m
+[31m-import React, { Component } from 'react';[m
+[31m-[m
+[31m-class Artists extends Component {[m
+[31m-    state = {[m
+[31m-        artists: [][m
+[31m-    }[m
+[31m-    //when our artist component renders, this function goes to the localhost of API and gets us all the artists[m
+[31m-    componentDidMount() {[m
+[31m-        fetch("http://localhost:8888/")[m
+[31m-        .then(res => res.json() )[m
+[31m-        .then((artists) => {[m
+[31m-            this.setState({[m
+[31m-                artists: artists[m
+[31m-            });[m
+[31m-          });[m
+[31m-        }[m
+[31m-    render() {[m
+[31m-        return ([m
+[31m-            <div>[m
+[31m-                <ul>[m
+[31m-                {[m
+[31m-                   this.state.artists.map(artist => {[m
+[31m-                       return <li> {artist.name} </li>[m
+[31m-                   }) [m
+[31m-                }[m
+[31m-                </ul>[m
+[31m-            </div>[m
+[31m-        );[m
+[31m-    }[m
+[31m-}[m
+[31m-[m
+[31m-export default Artists;[m
+\ No newline at end of file[m
+[1mdiff --git a/insta-list/backend/script.js b/insta-list/backend/script.js[m
+[1mdeleted file mode 100644[m
+[1mindex bebd21e..0000000[m
+[1m--- a/insta-list/backend/script.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,36 +0,0 @@[m
+[31m-var express = require('express');[m
+[31m-var mysql = require('mysql');[m
+[31m-var app = express();[m
+[31m-var cors = require('cors');[m
+[31m-//This file is node.js/express and we use this to talk to our database. [m
+[31m-app.use(cors())[m
+[31m-var connection = mysql.createPool({[m
+[31m-    connectionLimit: 50, //server only handles 50 SQL queries[m
+[31m-    host: 'localhost',[m
+[31m-    user: 'root',[m
+[31m-    password: 'Richmondhill1',[m
+[31m-    database: 'project1'[m
+[31m-});[m
+[31m-[m
+[31m-app.get('/', function(req, resp) {[m
+[31m-    connection.getConnection(function(error, tempCont) {[m
+[31m-        if (!!error) {[m
+[31m-            tempCont.release();[m
+[31m-            console.log('Error');[m
+[31m-        } else {[m
+[31m-            console.log('connected!'); [m
+[31m-            tempCont.query("SELECT * FROM artist", function(error, rows, fields) {[m
+[31m-                tempCont.release();[m
+[31m-                if(!!error) {[m
+[31m-                    console.log("Error in getting the query");[m
+[31m-                } else {[m
+[31m-                    console.log("Sucessful Query");[m
+[31m-                    console.log(rows);[m
+[31m-                    resp.json(rows);[m
+[31m-                  }[m
+[31m-            });[m
+[31m-        }[m
+[31m-    });[m
+[31m-});[m
+[31m-[m
+[31m-app.listen(8888);[m
+[1mdiff --git a/insta-list/package-lock.json b/insta-list/package-lock.json[m
+[1mdeleted file mode 100644[m
+[1mindex 129d310..0000000[m
+[1m--- a/insta-list/package-lock.json[m
+[1m+++ /dev/null[m
+[36m@@ -1,15162 +0,0 @@[m
+[31m-{[m
+[31m-  "name": "insta-list",[m
+[31m-  "version": "0.1.0",[m
+[31m-  "lockfileVersion": 1,[m
+[31m-  "requires": true,[m
+[31m-  "dependencies": {[m
+[31m-    "@babel/code-frame": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-a9gxpmdXtZEInkCSHUJDLHZVBgb1QS0jhss4cPP93EW7s+uC5bikET2twEF3KV+7rDblJcmNvTR7VJejqd2C2g==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/highlight": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/compat-data": {[m
+[31m-      "version": "7.9.0",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.9.0.tgz",[m
+[31m-      "integrity": "sha512-zeFQrr+284Ekvd9e7KAX954LkapWiOmQtsfHirhxqfdlX6MEC32iRE+pqUGlYIBchdevaCwvzxWGSy/YBNI85g==",[m
+[31m-      "requires": {[m
+[31m-        "browserslist": "^4.9.1",[m
+[31m-        "invariant": "^2.2.4",[m
+[31m-        "semver": "^5.5.0"[m
+[31m-      },[m
+[31m-      "dependencies": {[m
+[31m-        "semver": {[m
+[31m-          "version": "5.7.1",[m
+[31m-          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.1.tgz",[m
+[31m-          "integrity": "sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ=="[m
+[31m-        }[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/core": {[m
+[31m-      "version": "7.9.0",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.9.0.tgz",[m
+[31m-      "integrity": "sha512-kWc7L0fw1xwvI0zi8OKVBuxRVefwGOrKSQMvrQ3dW+bIIavBY3/NpXmpjMy7bQnLgwgzWQZ8TlM57YHpHNHz4w==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/code-frame": "^7.8.3",[m
+[31m-        "@babel/generator": "^7.9.0",[m
+[31m-        "@babel/helper-module-transforms": "^7.9.0",[m
+[31m-        "@babel/helpers": "^7.9.0",[m
+[31m-        "@babel/parser": "^7.9.0",[m
+[31m-        "@babel/template": "^7.8.6",[m
+[31m-        "@babel/traverse": "^7.9.0",[m
+[31m-        "@babel/types": "^7.9.0",[m
+[31m-        "convert-source-map": "^1.7.0",[m
+[31m-        "debug": "^4.1.0",[m
+[31m-        "gensync": "^1.0.0-beta.1",[m
+[31m-        "json5": "^2.1.2",[m
+[31m-        "lodash": "^4.17.13",[m
+[31m-        "resolve": "^1.3.2",[m
+[31m-        "semver": "^5.4.1",[m
+[31m-        "source-map": "^0.5.0"[m
+[31m-      },[m
+[31m-      "dependencies": {[m
+[31m-        "debug": {[m
+[31m-          "version": "4.1.1",[m
+[31m-          "resolved": "https://registry.npmjs.org/debug/-/debug-4.1.1.tgz",[m
+[31m-          "integrity": "sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==",[m
+[31m-          "requires": {[m
+[31m-            "ms": "^2.1.1"[m
+[31m-          }[m
+[31m-        },[m
+[31m-        "ms": {[m
+[31m-          "version": "2.1.2",[m
+[31m-          "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz",[m
+[31m-          "integrity": "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="[m
+[31m-        },[m
+[31m-        "semver": {[m
+[31m-          "version": "5.7.1",[m
+[31m-          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.1.tgz",[m
+[31m-          "integrity": "sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ=="[m
+[31m-        },[m
+[31m-        "source-map": {[m
+[31m-          "version": "0.5.7",[m
+[31m-          "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",[m
+[31m-          "integrity": "sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w="[m
+[31m-        }[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/generator": {[m
+[31m-      "version": "7.9.5",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/generator/-/generator-7.9.5.tgz",[m
+[31m-      "integrity": "sha512-GbNIxVB3ZJe3tLeDm1HSn2AhuD/mVcyLDpgtLXa5tplmWrJdF/elxB56XNqCuD6szyNkDi6wuoKXln3QeBmCHQ==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/types": "^7.9.5",[m
+[31m-        "jsesc": "^2.5.1",[m
+[31m-        "lodash": "^4.17.13",[m
+[31m-        "source-map": "^0.5.0"[m
+[31m-      },[m
+[31m-      "dependencies": {[m
+[31m-        "source-map": {[m
+[31m-          "version": "0.5.7",[m
+[31m-          "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",[m
+[31m-          "integrity": "sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w="[m
+[31m-        }[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-annotate-as-pure": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-6o+mJrZBxOoEX77Ezv9zwW7WV8DdluouRKNY/IR5u/YTMuKHgugHOzYWlYvYLpLA9nPsQCAAASpCIbjI9Mv+Uw==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-builder-binary-assignment-operator-visitor": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-builder-binary-assignment-operator-visitor/-/helper-builder-binary-assignment-operator-visitor-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-5eFOm2SyFPK4Rh3XMMRDjN7lBH0orh3ss0g3rTYZnBQ+r6YPj7lgDyCvPphynHvUrobJmeMignBr6Acw9mAPlw==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-explode-assignable-expression": "^7.8.3",[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-builder-react-jsx": {[m
+[31m-      "version": "7.9.0",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-builder-react-jsx/-/helper-builder-react-jsx-7.9.0.tgz",[m
+[31m-      "integrity": "sha512-weiIo4gaoGgnhff54GQ3P5wsUQmnSwpkvU0r6ZHq6TzoSzKy4JxHEgnxNytaKbov2a9z/CVNyzliuCOUPEX3Jw==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-annotate-as-pure": "^7.8.3",[m
+[31m-        "@babel/types": "^7.9.0"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-builder-react-jsx-experimental": {[m
+[31m-      "version": "7.9.5",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-builder-react-jsx-experimental/-/helper-builder-react-jsx-experimental-7.9.5.tgz",[m
+[31m-      "integrity": "sha512-HAagjAC93tk748jcXpZ7oYRZH485RCq/+yEv9SIWezHRPv9moZArTnkUNciUNzvwHUABmiWKlcxJvMcu59UwTg==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-annotate-as-pure": "^7.8.3",[m
+[31m-        "@babel/helper-module-imports": "^7.8.3",[m
+[31m-        "@babel/types": "^7.9.5"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-compilation-targets": {[m
+[31m-      "version": "7.8.7",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-compilation-targets/-/helper-compilation-targets-7.8.7.tgz",[m
+[31m-      "integrity": "sha512-4mWm8DCK2LugIS+p1yArqvG1Pf162upsIsjE7cNBjez+NjliQpVhj20obE520nao0o14DaTnFJv+Fw5a0JpoUw==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/compat-data": "^7.8.6",[m
+[31m-        "browserslist": "^4.9.1",[m
+[31m-        "invariant": "^2.2.4",[m
+[31m-        "levenary": "^1.1.1",[m
+[31m-        "semver": "^5.5.0"[m
+[31m-      },[m
+[31m-      "dependencies": {[m
+[31m-        "semver": {[m
+[31m-          "version": "5.7.1",[m
+[31m-          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.1.tgz",[m
+[31m-          "integrity": "sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ=="[m
+[31m-        }[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-create-class-features-plugin": {[m
+[31m-      "version": "7.9.5",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.9.5.tgz",[m
+[31m-      "integrity": "sha512-IipaxGaQmW4TfWoXdqjY0TzoXQ1HRS0kPpEgvjosb3u7Uedcq297xFqDQiCcQtRRwzIMif+N1MLVI8C5a4/PAA==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-function-name": "^7.9.5",[m
+[31m-        "@babel/helper-member-expression-to-functions": "^7.8.3",[m
+[31m-        "@babel/helper-optimise-call-expression": "^7.8.3",[m
+[31m-        "@babel/helper-plugin-utils": "^7.8.3",[m
+[31m-        "@babel/helper-replace-supers": "^7.8.6",[m
+[31m-        "@babel/helper-split-export-declaration": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-create-regexp-features-plugin": {[m
+[31m-      "version": "7.8.8",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-create-regexp-features-plugin/-/helper-create-regexp-features-plugin-7.8.8.tgz",[m
+[31m-      "integrity": "sha512-LYVPdwkrQEiX9+1R29Ld/wTrmQu1SSKYnuOk3g0CkcZMA1p0gsNxJFj/3gBdaJ7Cg0Fnek5z0DsMULePP7Lrqg==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-annotate-as-pure": "^7.8.3",[m
+[31m-        "@babel/helper-regex": "^7.8.3",[m
+[31m-        "regexpu-core": "^4.7.0"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-define-map": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-define-map/-/helper-define-map-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-PoeBYtxoZGtct3md6xZOCWPcKuMuk3IHhgxsRRNtnNShebf4C8YonTSblsK4tvDbm+eJAw2HAPOfCr+Q/YRG/g==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-function-name": "^7.8.3",[m
+[31m-        "@babel/types": "^7.8.3",[m
+[31m-        "lodash": "^4.17.13"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-explode-assignable-expression": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-explode-assignable-expression/-/helper-explode-assignable-expression-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-N+8eW86/Kj147bO9G2uclsg5pwfs/fqqY5rwgIL7eTBklgXjcOJ3btzS5iM6AitJcftnY7pm2lGsrJVYLGjzIw==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/traverse": "^7.8.3",[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-function-name": {[m
+[31m-      "version": "7.9.5",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-function-name/-/helper-function-name-7.9.5.tgz",[m
+[31m-      "integrity": "sha512-JVcQZeXM59Cd1qanDUxv9fgJpt3NeKUaqBqUEvfmQ+BCOKq2xUgaWZW2hr0dkbyJgezYuplEoh5knmrnS68efw==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-get-function-arity": "^7.8.3",[m
+[31m-        "@babel/template": "^7.8.3",[m
+[31m-        "@babel/types": "^7.9.5"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-get-function-arity": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-get-function-arity/-/helper-get-function-arity-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-FVDR+Gd9iLjUMY1fzE2SR0IuaJToR4RkCDARVfsBBPSP53GEqSFjD8gNyxg246VUyc/ALRxFaAK8rVG7UT7xRA==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-hoist-variables": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-hoist-variables/-/helper-hoist-variables-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-ky1JLOjcDUtSc+xkt0xhYff7Z6ILTAHKmZLHPxAhOP0Nd77O+3nCsd6uSVYur6nJnCI029CrNbYlc0LoPfAPQg==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-member-expression-to-functions": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-member-expression-to-functions/-/helper-member-expression-to-functions-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-fO4Egq88utkQFjbPrSHGmGLFqmrshs11d46WI+WZDESt7Wu7wN2G2Iu+NMMZJFDOVRHAMIkB5SNh30NtwCA7RA==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-module-imports": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-module-imports/-/helper-module-imports-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-R0Bx3jippsbAEtzkpZ/6FIiuzOURPcMjHp+Z6xPe6DtApDJx+w7UYyOLanZqO8+wKR9G10s/FmHXvxaMd9s6Kg==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-module-transforms": {[m
+[31m-      "version": "7.9.0",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-module-transforms/-/helper-module-transforms-7.9.0.tgz",[m
+[31m-      "integrity": "sha512-0FvKyu0gpPfIQ8EkxlrAydOWROdHpBmiCiRwLkUiBGhCUPRRbVD2/tm3sFr/c/GWFrQ/ffutGUAnx7V0FzT2wA==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-module-imports": "^7.8.3",[m
+[31m-        "@babel/helper-replace-supers": "^7.8.6",[m
+[31m-        "@babel/helper-simple-access": "^7.8.3",[m
+[31m-        "@babel/helper-split-export-declaration": "^7.8.3",[m
+[31m-        "@babel/template": "^7.8.6",[m
+[31m-        "@babel/types": "^7.9.0",[m
+[31m-        "lodash": "^4.17.13"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-optimise-call-expression": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-optimise-call-expression/-/helper-optimise-call-expression-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-Kag20n86cbO2AvHca6EJsvqAd82gc6VMGule4HwebwMlwkpXuVqrNRj6CkCV2sKxgi9MyAUnZVnZ6lJ1/vKhHQ==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-plugin-utils": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-plugin-utils/-/helper-plugin-utils-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-j+fq49Xds2smCUNYmEHF9kGNkhbet6yVIBp4e6oeQpH1RUs/Ir06xUKzDjDkGcaaokPiTNs2JBWHjaE4csUkZQ=="[m
+[31m-    },[m
+[31m-    "@babel/helper-regex": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-regex/-/helper-regex-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-BWt0QtYv/cg/NecOAZMdcn/waj/5P26DR4mVLXfFtDokSR6fyuG0Pj+e2FqtSME+MqED1khnSMulkmGl8qWiUQ==",[m
+[31m-      "requires": {[m
+[31m-        "lodash": "^4.17.13"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-remap-async-to-generator": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-remap-async-to-generator/-/helper-remap-async-to-generator-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-kgwDmw4fCg7AVgS4DukQR/roGp+jP+XluJE5hsRZwxCYGg+Rv9wSGErDWhlI90FODdYfd4xG4AQRiMDjjN0GzA==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-annotate-as-pure": "^7.8.3",[m
+[31m-        "@babel/helper-wrap-function": "^7.8.3",[m
+[31m-        "@babel/template": "^7.8.3",[m
+[31m-        "@babel/traverse": "^7.8.3",[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-replace-supers": {[m
+[31m-      "version": "7.8.6",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-replace-supers/-/helper-replace-supers-7.8.6.tgz",[m
+[31m-      "integrity": "sha512-PeMArdA4Sv/Wf4zXwBKPqVj7n9UF/xg6slNRtZW84FM7JpE1CbG8B612FyM4cxrf4fMAMGO0kR7voy1ForHHFA==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-member-expression-to-functions": "^7.8.3",[m
+[31m-        "@babel/helper-optimise-call-expression": "^7.8.3",[m
+[31m-        "@babel/traverse": "^7.8.6",[m
+[31m-        "@babel/types": "^7.8.6"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-simple-access": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-simple-access/-/helper-simple-access-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-VNGUDjx5cCWg4vvCTR8qQ7YJYZ+HBjxOgXEl7ounz+4Sn7+LMD3CFrCTEU6/qXKbA2nKg21CwhhBzO0RpRbdCw==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/template": "^7.8.3",[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-split-export-declaration": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-split-export-declaration/-/helper-split-export-declaration-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-3x3yOeyBhW851hroze7ElzdkeRXQYQbFIb7gLK1WQYsw2GWDay5gAJNw1sWJ0VFP6z5J1whqeXH/WCdCjZv6dA==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helper-validator-identifier": {[m
+[31m-      "version": "7.9.5",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-7.9.5.tgz",[m
+[31m-      "integrity": "sha512-/8arLKUFq882w4tWGj9JYzRpAlZgiWUJ+dtteNTDqrRBz9Iguck9Rn3ykuBDoUwh2TO4tSAJlrxDUOXWklJe4g=="[m
+[31m-    },[m
+[31m-    "@babel/helper-wrap-function": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helper-wrap-function/-/helper-wrap-function-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-LACJrbUET9cQDzb6kG7EeD7+7doC3JNvUgTEQOx2qaO1fKlzE/Bf05qs9w1oXQMmXlPO65lC3Tq9S6gZpTErEQ==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-function-name": "^7.8.3",[m
+[31m-        "@babel/template": "^7.8.3",[m
+[31m-        "@babel/traverse": "^7.8.3",[m
+[31m-        "@babel/types": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/helpers": {[m
+[31m-      "version": "7.9.2",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/helpers/-/helpers-7.9.2.tgz",[m
+[31m-      "integrity": "sha512-JwLvzlXVPjO8eU9c/wF9/zOIN7X6h8DYf7mG4CiFRZRvZNKEF5dQ3H3V+ASkHoIB3mWhatgl5ONhyqHRI6MppA==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/template": "^7.8.3",[m
+[31m-        "@babel/traverse": "^7.9.0",[m
+[31m-        "@babel/types": "^7.9.0"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/highlight": {[m
+[31m-      "version": "7.9.0",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/highlight/-/highlight-7.9.0.tgz",[m
+[31m-      "integrity": "sha512-lJZPilxX7Op3Nv/2cvFdnlepPXDxi29wxteT57Q965oc5R9v86ztx0jfxVrTcBk8C2kcPkkDa2Z4T3ZsPPVWsQ==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-validator-identifier": "^7.9.0",[m
+[31m-        "chalk": "^2.0.0",[m
+[31m-        "js-tokens": "^4.0.0"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/parser": {[m
+[31m-      "version": "7.9.4",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/parser/-/parser-7.9.4.tgz",[m
+[31m-      "integrity": "sha512-bC49otXX6N0/VYhgOMh4gnP26E9xnDZK3TmbNpxYzzz9BQLBosQwfyOe9/cXUU3txYhTzLCbcqd5c8y/OmCjHA=="[m
+[31m-    },[m
+[31m-    "@babel/plugin-proposal-async-generator-functions": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/plugin-proposal-async-generator-functions/-/plugin-proposal-async-generator-functions-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-NZ9zLv848JsV3hs8ryEh7Uaz/0KsmPLqv0+PdkDJL1cJy0K4kOCFa8zc1E3mp+RHPQcpdfb/6GovEsW4VDrOMw==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-plugin-utils": "^7.8.3",[m
+[31m-        "@babel/helper-remap-async-to-generator": "^7.8.3",[m
+[31m-        "@babel/plugin-syntax-async-generators": "^7.8.0"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/plugin-proposal-class-properties": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/plugin-proposal-class-properties/-/plugin-proposal-class-properties-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-EqFhbo7IosdgPgZggHaNObkmO1kNUe3slaKu54d5OWvy+p9QIKOzK1GAEpAIsZtWVtPXUHSMcT4smvDrCfY4AA==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-create-class-features-plugin": "^7.8.3",[m
+[31m-        "@babel/helper-plugin-utils": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/plugin-proposal-decorators": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-e3RvdvS4qPJVTe288DlXjwKflpfy1hr0j5dz5WpIYYeP7vQZg2WfAEIp8k5/Lwis/m5REXEteIz6rrcDtXXG7w==",[m
+[31m-      "requires": {[m
+[31m-        "@babel/helper-create-class-features-plugin": "^7.8.3",[m
+[31m-        "@babel/helper-plugin-utils": "^7.8.3",[m
+[31m-        "@babel/plugin-syntax-decorators": "^7.8.3"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "@babel/plugin-proposal-dynamic-import": {[m
+[31m-      "version": "7.8.3",[m
+[31m-      "resolved": "https://registry.npmjs.org/@babel/plugin-proposal-dynamic-import/-/plugin-proposal-dynamic-import-7.8.3.tgz",[m
+[31m-      "integrity": "sha512-NyaBbyLFXFLT9FP+zk0kYlUlA8XtCUbehs67F0nnEg7KICgMc2mNkIeu9TYhKzyXMkrapZFwAhXLdnt4IYHy1w==",[m
+[31m-      "r
