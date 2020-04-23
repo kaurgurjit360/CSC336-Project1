@@ -9,15 +9,16 @@ const song = sequelize.define("song", {
             type: Datatypes.STRING,
             allowNull: false,
             primaryKey: false
-        }
+        },
+        albumId: {
+            type: Datatypes.INTEGER
+
+    }
+    
     });
-    // song.associate = models => {
-    //     song.belongsTo(models.Album, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // }
+     song.associate = models => {
+         song.belongsTo(models.album,{foreginKey: 'albumId'});
+     }
     
     return song;
 }

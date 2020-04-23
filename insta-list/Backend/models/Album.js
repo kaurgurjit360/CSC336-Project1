@@ -9,15 +9,19 @@ module.exports = (sequelize, Datatypes) => {
             type: Datatypes.STRING,
             allowNull: false,
             primaryKey: false
-        }
+        }, 
+
+       
 
     });
 
-    // album.associate = models => {
-    //     album.hasMany(models.song, {
-    //         as: 'song',
-    //         foreignKey: 'songId'
-    //     });
-    // }
+     album.associate =function(models) {
+           album.hasMany(models.song, {
+             as: 'song',
+            foreignKey: 'albumId',
+            allowNull: false,
+            
+        });
+     }
     return album;
 }
