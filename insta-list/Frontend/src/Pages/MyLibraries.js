@@ -10,4 +10,4 @@ class MyLibraries extends Component {
     }
 }
 
-export default MyLibraries;
+export default MyLibraries
