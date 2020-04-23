@@ -5,13 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MyLibraries from './Pages/MyLibraries';
 import Login from './Pages/Login';
 import Navbar_Homepage from './Components/Navbar_Homepage'
-import { 
-    BrowserRouter as Router, 
-    Switch, 
+import {
+    BrowserRouter as Router,
+    Switch,
     Route
   } from 'react-router-dom';
 
-  
+
 class App extends React.Component{
 
     constructor(props) {
@@ -43,7 +43,7 @@ class App extends React.Component{
                             </div>
                         </div>
                     </Router>
- 
+
                 {/* <div style= {{backgroundColor: "white"}}>
                 <p className="App-intro">{this.state.apiResponse}</p>
                 </div> */}
