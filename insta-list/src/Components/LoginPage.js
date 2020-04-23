@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
-import MenuAppBar from './Components/navbar.js';
-import Artists from '../Artists.js';
+import React from 'react';
+import NavBar from './NavBar';
+import Artists from './Artists.js';
 
-class LoginPage extends Component {
-    render() {
+
+function LoginPage() {
+    
         return (
             <div>
-            <MenuAppBar />
+            
             <div style={{color: "red"}}> here is a random list of Artists from DB: <Artists /> </div>
             </div>
         );
-    }
+    
 }
 
 export default LoginPage;

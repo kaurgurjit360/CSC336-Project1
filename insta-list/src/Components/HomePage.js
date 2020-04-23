@@ -6,9 +6,9 @@ function HomePage()
 {
     return(
         <div className="Home">
-        <NavBar/>
-        </div>
-    );
+       <h3>This is Home Page</h3>
+    </div>
+  );
 }
 
 export default HomePage

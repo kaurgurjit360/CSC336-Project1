@@ -1,12 +1,13 @@
 import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import SearchIcon from '@material-ui/icons/Search';
-import IconButton from '@material-ui/core/IconButton'
-import InputBase from '@material-ui/core/InputBase';
+  import { fade, makeStyles } from '@material-ui/core/styles';
+  import AppBar from '@material-ui/core/AppBar';
+  import Toolbar from '@material-ui/core/Toolbar';
+  import Typography from '@material-ui/core/Typography';
+  import Button from '@material-ui/core/Button';
+  import SearchIcon from '@material-ui/icons/Search';
+  import IconButton from '@material-ui/core/IconButton'
+  import InputBase from '@material-ui/core/InputBase';
+  
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,6 +66,7 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
+      
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
@@ -88,12 +90,25 @@ export default function ButtonAppBar() {
             <SearchIcon />
           </IconButton>
           </div>
-        
-          <Button color="inherit">Sign Up</Button>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit"> Home</Button>
+          <Button color="inherit"> MyLibrary</Button>
+           <Button color="inherit">Login</Button>
           
         </Toolbar>
       </AppBar>
+      
     </div>
   );
 }
+
+
+      
+           
+          
+            
+        
+       
+            
+    
+
+      
