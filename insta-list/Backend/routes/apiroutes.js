@@ -30,6 +30,20 @@ router.get("/allalbum", (req, res) => {
     
 });
 
+//get all the user
+router.get("/alluser", (req, res) => {
+    db.user.findAll().then( artists => res.send(artists));
+  
+    
+});
+
+//get all the likesong
+router.get("/alllikesong", (req, res) => {
+    db.likesong.findAll().then( artists => res.send(artists));
+  
+    
+});
+
 //get genre by name
 router.get("/find/:genre_name", (req, res) => {
     db.genre.findAll({
@@ -38,6 +52,45 @@ router.get("/find/:genre_name", (req, res) => {
         }
     }).then(genres => res.send(genres));
 });
+
+//get user by name
+router.get("/find/:name", (req, res) => {
+    db.user.findAll({
+        where: {
+            name: req.params.name
+        }
+    }).then(users => res.send(users));
+});
+
+//get artist by name
+router.get("/find/:artist_name", (req, res) => {
+    db.artist.findAll({
+        where: {
+           artist_name: req.params.artist_name
+        }
+    }).then(artists => res.send(artists));
+});
+
+//get album by name
+router.get("/find/:album_name", (req, res) => {
+    db.album.findAll({
+        where: {
+           album_name: req.params.album_name
+        }
+    }).then(albums => res.send(albums));
+});
+
+//get song by name
+router.get("/find/:song_name", (req, res) => {
+    db.song.findAll({
+        where: {
+           song_name: req.params.song_name
+        }
+    }).then(songs => res.send(songs));
+});
+
+
+
 //create a genre
 router.post("/newgenre", (req, res) => {
     db.genre.create({
