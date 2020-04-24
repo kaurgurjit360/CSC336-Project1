@@ -11,5 +11,8 @@ module.exports = (sequelize, Datatypes) => {
             primaryKey: false
         }
     });
+    artist.associate= models=>{
+        artist.hasMany(models.song,{foreignKey:"artistId" })
+    }
     return artist;
 }
