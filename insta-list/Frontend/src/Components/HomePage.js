@@ -7,7 +7,7 @@ function HomePage()
 {
     return(
         <div className="Home">
-        <SimpleCard/>
+        <p> this a homepage</p>
         </div>
     );
 }
