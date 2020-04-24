@@ -9,12 +9,14 @@ module.exports = (sequelize, Datatypes) => {
             
             create.belongsTo(models.user,{
 
-                foreignKey: 'userId'
+                foreignKey: 'userId',
+                primaryKey: true
             })
 
             create.belongsTo(models.playlist,{
 
-                foreginKey: 'playlistId'
+                foreginKey: 'playlistId',
+                primaryKey: true
             })
     
              

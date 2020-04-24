@@ -17,21 +17,16 @@ module.exports = (sequelize, Datatypes) => {
     
     
              playlist.hasMany(models.song,{
-                 foreginKey: {
-                     
-                 }
+                 foreginKey: 'songId'
+
                 })
             
                 playlist.hasMany(models.likeplaylist,{
-                    foreginKey:{
-                       
-                    }
+                    foreginKey:'likedplaylistId'
                 })
 
                 playlist.hasMany(models.create,{
-                    foreignKey:{
-                        
-                    }
+                    foreignKey:'playlistId'
                 })
     
            

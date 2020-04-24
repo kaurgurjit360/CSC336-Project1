@@ -1,6 +1,9 @@
 module.exports = (sequelize, Datatypes) => {
     const likeplaylist = sequelize.define("likeplaylist", {
-       
+        id:{
+            type: Datatypes.INTEGER,
+            primaryKey:true
+        }
       
            
         
@@ -9,12 +12,20 @@ module.exports = (sequelize, Datatypes) => {
             
             likeplaylist.belongsTo(models.user,{
 
-                foreignKey:'userId'
+                foreignKey:'userId',
+                primaryKey: true
             })
 
-            likeplaylist.belongsTo(models.playlist,{
+            /*likeplaylist.belongsTo(models.playlist,{
 
-                foreginKey: 'playlistId'
+                foreginKey: 'playlistId',
+                primaryKey: true
+            })*/
+
+            likeplaylist.belongsTo(models.song,{
+
+                foreginKey: 'songId',
+                primaryKey: true
             })
     
              

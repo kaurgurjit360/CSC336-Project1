@@ -9,18 +9,15 @@ module.exports = (sequelize, Datatypes) => {
             
             likesong.belongsTo(models.user,{
 
-                foreignKey:{
-                    
-                   
-                    
-                }
+                foreignKey:'userId',
+                primaryKey: true
             })
 
             likesong.belongsTo(models.song,{
 
-                foreginKey: {
-                  
-                }
+                foreginKey: 'songId'  ,
+                primaryKey: true   
+                
             })
     
              
