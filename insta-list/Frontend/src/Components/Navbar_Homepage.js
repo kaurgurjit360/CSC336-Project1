@@ -3,8 +3,28 @@ import { Nav } from 'react-bootstrap';
 import { Navbar } from 'react-bootstrap';
 import FacebookLogin from 'react-facebook-login';
 import Button from '@material-ui/core/Button';
+import axios from "axios";
 
 export default class Navbar_Homepage extends Component {
+  constructor() {
+    super();
+    this.state2 = {
+      isLoggedIn: false,
+      userID: '',
+      name: '',
+      email: '',
+      picture: ''
+    }
+  }
+
+  checkLoginStatus() {
+    if (this.state2.isLoggedIn) {
+      console.log("Yes, user is logged in.")
+    } else {
+      console.log("No, user is not logged in.")
+    }
+  }
+
   state = {
       isLoggedIn: false,
       userID: '',
@@ -37,6 +57,7 @@ export default class Navbar_Homepage extends Component {
 
     render() {
       let fbContent;
+      this.checkLoginStatus();
       if (this.state.isLoggedIn) {
         console.log("state 1", this.state)
         fbContent = (
