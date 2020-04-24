@@ -7,20 +7,14 @@ module.exports = (sequelize, Datatypes) => {
         });
          create.associate = models => {
             
-            ceate.belongsTo(models.user,{
+            create.belongsTo(models.user,{
 
-                foreignKey:{
-                    
-                    primaryKey: true
-                    
-                }
+                foreignKey: 'userId'
             })
 
             create.belongsTo(models.playlist,{
 
-                foreginKey: {
-                    primaryKey: true
-                }
+                foreginKey: 'playlistId'
             })
     
              

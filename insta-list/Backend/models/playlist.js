@@ -8,7 +8,7 @@ module.exports = (sequelize, Datatypes) => {
             playlist_name: {
                 type: Datatypes.STRING,
                 allowNull: false,
-                primaryKey: true
+                
             }
            
         
@@ -18,13 +18,19 @@ module.exports = (sequelize, Datatypes) => {
     
              playlist.hasMany(models.song,{
                  foreginKey: {
-                     allowNull: true
+                     
                  }
                 })
             
-                playlist.hasMany(models.likedplaylist,{
+                playlist.hasMany(models.likeplaylist,{
                     foreginKey:{
-                        allowNull:false
+                       
+                    }
+                })
+
+                playlist.hasMany(models.create,{
+                    foreignKey:{
+                        
                     }
                 })
     

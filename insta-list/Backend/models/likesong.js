@@ -11,7 +11,7 @@ module.exports = (sequelize, Datatypes) => {
 
                 foreignKey:{
                     
-                    primaryKey: true
+                   
                     
                 }
             })
@@ -19,7 +19,7 @@ module.exports = (sequelize, Datatypes) => {
             likesong.belongsTo(models.song,{
 
                 foreginKey: {
-                    primaryKey: true
+                  
                 }
             })
     

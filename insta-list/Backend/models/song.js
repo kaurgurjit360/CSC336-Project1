@@ -17,7 +17,12 @@ const song = sequelize.define("song", {
     
     });
      song.associate = models => {
-         song.belongsTo(models.album,{foreginKey: 'albumId'});
+         song.belongsTo(models.album,{foreginKey:'albumID'});
+         song.belongsTo(models.artist,{foreginKey:'artistID'});
+         song.belongsTo(models.playlist,{foreginKey:'playlistID'});
+      
+         song.hasMany(models.likesong,{foreginKey:'likedsongID'});
+         song.hasMany(models.genre,{foreginKey:'genreID'});
      }
     
     return song;

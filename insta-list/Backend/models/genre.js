@@ -12,5 +12,9 @@ module.exports = (sequelize, Datatypes) => {
 
         }
     });
+    genre.associate = models => {
+        genre.belongsTo(models.song,{foreginKey: {allowNull:false}});
+       
+    }
     return genre;
 }
