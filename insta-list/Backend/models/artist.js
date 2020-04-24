@@ -12,7 +12,7 @@ module.exports = (sequelize, Datatypes) => {
         }
     });
     artist.associate= models=>{
-        artist.hasMany(models.song,{foreignKey:"artistId"  })
+        artist.hasMany(models.song,{foreignKey:"artistId", onDelete:'cascade'  })
     }
     return artist;
 }

@@ -1,7 +1,16 @@
 module.exports = (sequelize, Datatypes) => {
     const likesong = sequelize.define("likesong", {
        
-      
+      userId:{
+          type: Datatypes.INTEGER,
+          primaryKey: true,
+          autoIncrement: false
+      },
+      songId:{
+          type: Datatypes.INTEGER,
+          allowNull:false,
+          unique:true
+      }
            
         
         });
@@ -10,13 +19,15 @@ module.exports = (sequelize, Datatypes) => {
             likesong.belongsTo(models.user,{
 
                 foreignKey:'userId',
-                primaryKey: true
+                unique:true,
+                allowNull:false
             })
 
             likesong.belongsTo(models.song,{
 
                 foreginKey: 'songId'  ,
-                primaryKey: true   
+                unique:true,
+                allowNull:false  
                 
             })
     

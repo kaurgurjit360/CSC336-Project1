@@ -8,13 +8,19 @@ module.exports = (sequelize, Datatypes) => {
         genre_name: {
             type: Datatypes.STRING,
             allowNull: false,
-            primaryKey: false
+            
 
+        },
+
+        songId:{
+            type: Datatypes.INTEGER,
+            allowNull:false,
+            unique: true
         }
     });
     genre.associate = models => 
     {
-        genre.belongsTo(models.song,{foreginKey:'songId', primaryKey: true });
+        genre.belongsTo(models.song,{foreginKey:'songId', unique: true, allowNull:false, onDelete:'cascade' });
        
     }
     return genre;
