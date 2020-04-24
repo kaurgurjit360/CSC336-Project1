@@ -1,4 +1,4 @@
-module.exports = (sequelize, Datatypes) => {
+/*module.exports = (sequelize, Datatypes) => {
     const create = sequelize.define("create", {
        
       
@@ -26,4 +26,4 @@ module.exports = (sequelize, Datatypes) => {
          
         
         return create;
-    }
+    }*/

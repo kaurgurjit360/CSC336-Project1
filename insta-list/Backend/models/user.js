@@ -16,7 +16,7 @@ module.exports = (sequelize, Datatypes) => {
         }
         });
          user.associate = models => {
-             user.hasMany(models.create,{foreginKey: {allowNull:false}});
+            // user.hasMany(models.create,{foreginKey: {allowNull:false}});
             
          }
         
