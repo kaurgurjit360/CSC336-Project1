@@ -13,6 +13,7 @@ export default class Navbar_Homepage extends Component {
                         <Nav className="ml-auto">
                         <Nav.Link href="home" >Home</Nav.Link>
                         <Nav.Link href="login" exact to= "/Pages/login" >Log In</Nav.Link>
+                        <Nav.Link href="signup" exact to= "/Pages/SignUp">Sign Up</Nav.Link>
                         <Nav.Link href="library" exact to= "/Pages/MyLibraries">My Library</Nav.Link>
                         </Nav>
                     </Navbar>
