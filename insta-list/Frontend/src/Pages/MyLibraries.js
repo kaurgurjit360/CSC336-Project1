@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar_Homepage from '../Components/Navbar_Homepage.js'
 import FacebookLogin from 'react-facebook-login';
+import ls from 'local-storage'
 
 class MyLibraries extends Component {
     render() {
@@ -54,3 +55,5 @@ class MyLibraries extends Component {
 }
 
 export default MyLibraries
+
+//     return JSON.parse(localStorage.getItem('ticker') || '{}');
