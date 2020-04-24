@@ -1,4 +1,5 @@
 import React from 'react'
+import SimpleCard from './SimpleCard'
 
 
 
@@ -6,7 +7,7 @@ function HomePage()
 {
     return(
         <div className="Home">
-        <p> this is home page</p>
+        <SimpleCard/>
         </div>
     );
 }
