@@ -10,10 +10,10 @@ const song = sequelize.define("song", {
             allowNull: false,
             primaryKey: false
         },
-    //     albumId: {
-    //         type: Datatypes.INTEGER
+         albumId: {
+             type: Datatypes.INTEGER
 
-    // }
+     }
     
     });
      song.associate = models => {
