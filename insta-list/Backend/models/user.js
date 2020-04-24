@@ -13,9 +13,7 @@ module.exports = (sequelize, Datatypes) => {
             password: {
                 type: Datatypes.STRING,
                 allowNull: true
-    
         }
-        
         });
          user.associate = models => {
              user.hasMany(models.create,{foreginKey: {allowNull:false}});

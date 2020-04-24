@@ -10,19 +10,19 @@ const song = sequelize.define("song", {
             allowNull: false,
             primaryKey: false
         },
-        albumId: {
-            type: Datatypes.INTEGER
+    //     albumId: {
+    //         type: Datatypes.INTEGER
 
-    }
+    // }
     
     });
-     song.associate = models => {
-         song.belongsTo(models.album,{foreginKey:'albumID', primaryKey: true});
-         song.belongsTo(models.artist,{foreginKey:'artistID', primaryKey: true});
-         song.hasMany(models.likeplaylist,{foreginKey:'songId', primaryKey: true});      
-         song.hasMany(models.likesong,{foreginKey:'likedsongID'});
-         song.hasMany(models.genre,{foreginKey:'genreID'});
-     }
+    //  song.associate = models => {
+    //      song.belongsTo(models.album,{foreginKey:'albumID', primaryKey: true});
+    //      song.belongsTo(models.artist,{foreginKey:'artistID', primaryKey: true});
+    //      song.hasMany(models.likeplaylist,{foreginKey:'songId', primaryKey: true});      
+    //      song.hasMany(models.likesong,{foreginKey:'likedsongID'});
+    //      song.hasMany(models.genre,{foreginKey:'genreID'});
+    //  }
     
     return song;
 }
