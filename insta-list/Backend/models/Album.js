@@ -20,6 +20,7 @@ module.exports = (sequelize, Datatypes) => {
              as: 'song',
             foreignKey: 'albumId',
             allowNull: false,
+            unqiue: true
             
         });
      }
