@@ -45,7 +45,7 @@ router.get("/alllikesong", (req, res) => {
 });
 
 //get genre by name
-router.get("/find/:genre_name", (req, res) => {
+router.get("/find/genre/:genre_name", (req, res) => {
     db.genre.findAll({
         where: {
             genre_name: req.params.genre_name
@@ -54,7 +54,7 @@ router.get("/find/:genre_name", (req, res) => {
 });
 
 //get user by name
-router.get("/find/:name", (req, res) => {
+router.get("/find/user/:name", (req, res) => {
     db.user.findAll({
         where: {
             name: req.params.name
@@ -63,7 +63,7 @@ router.get("/find/:name", (req, res) => {
 });
 
 //get artist by name
-router.get("/find/:artist_name", (req, res) => {
+router.get("/find/artist/:artist_name", (req, res) => {
     db.artist.findAll({
         where: {
            artist_name: req.params.artist_name
@@ -72,7 +72,7 @@ router.get("/find/:artist_name", (req, res) => {
 });
 
 //get album by name
-router.get("/find/:album_name", (req, res) => {
+router.get("/find/album/:album_name", (req, res) => {
     db.album.findAll({
         where: {
            album_name: req.params.album_name
@@ -81,7 +81,7 @@ router.get("/find/:album_name", (req, res) => {
 });
 
 //get song by name
-router.get("/find/:song_name", (req, res) => {
+router.get("/find/song/:song_name", (req, res) => {
     db.song.findAll({
         where: {
            song_name: req.params.song_name
@@ -95,7 +95,8 @@ router.get("/find/:song_name", (req, res) => {
 router.post("/newgenre", (req, res) => {
     db.genre.create({
         id: req.body.id,
-        genre_name: req.body.genre_name
+        genre_name: req.body.genre_name,
+        songId: req.body.songId
     }).then( submittedgenre => res.send(submittedgenre));
 });
 //create a song
@@ -201,7 +202,7 @@ router.delete("/deletealbum",(req,res)=> {
   
 //deleteing genre
 
-router.delete("/deletesong",(req,res)=> {
+router.delete("/deletegenre",(req,res)=> {
     db.genre.destroy({
       where:{
           id: req.body.id
