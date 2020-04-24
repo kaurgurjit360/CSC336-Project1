@@ -1,4 +1,4 @@
-module.exports = (sequelize, Datatypes) => {
+/*module.exports = (sequelize, Datatypes) => {
     const playlist = sequelize.define("playlist", {
             id: {
                 type: Datatypes.INTEGER,
@@ -35,4 +35,4 @@ module.exports = (sequelize, Datatypes) => {
          
         
         return playlist;
-    }
+    }*/
