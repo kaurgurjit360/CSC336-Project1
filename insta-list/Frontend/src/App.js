@@ -17,10 +17,22 @@ import {
 
 class App extends React.Component{
 
-    constructor(props) {
-        super(props);
-        this.state = { apiResponse: "" };
+    constructor() {
+        super();
+        this.state = {
+          apiResponse: "",
+          userName: "Albert Felix",
+          password: "",
+          isLoggedIn: false,
+          random: ""
+         };
     }
+
+    sampleFunctionParent() {
+      console.log("Sample function parent")
+    }
+
+
     callAPI() {
         fetch("http://localhost:3000/api/all")
             .then(res => res.text())
@@ -32,6 +44,7 @@ class App extends React.Component{
 
     render()
     {
+      console.log(this.props.sampleFunctionParent())
         return(
             <div >
                 <Navbar_Homepage />

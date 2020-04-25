@@ -1,54 +1,66 @@
 import React, { Component } from 'react';
 import Navbar_Homepage from '../Components/Navbar_Homepage.js'
-import FacebookLogin from 'react-facebook-login';
 import ls from 'local-storage'
 
 class MyLibraries extends Component {
-    render() {
-      let loggedIn = false;
-      let user = "John Doe";
-      console.log("is user logged in?", loggedIn);
-      let content;
-      let likedSongs;
-      let likedPlaylists;
 
+  constructor(props) {
+      super(props);
+        this.state = {
+          id: "this.props.userName",
+          loggedIn: "this.props.isLoggedIn"
+    };
+  }
+
+    render() {
+      let loggedIn = true;
+      let user = "";
+      console.log(this.props.sampleFunctionParent);
+      let header;
+      let body;
+      let likedSongs;
 
       if (loggedIn) {
-        likedSongs = (
+        user = "John Doe" // get username and replace here
+        header = (
           <div>
-            <p>1. Song 1 - Artist - Album</p>
-            <p>2. Song 2 - Artist - Album</p>
+            <h4> {user}'s Playlist </h4>
           </div>
         );
+        /*
+          if user has no liked songs:
+              likedSongs = "No liked songs so far!"
+          else:
+            songsForUser = [] // get all songs for this user
+            artsitsorUser = [] // get all songs for this user
 
-        likedPlaylists = (
-          <div>
-            <p>1. playlistName - Creator</p>
-            <p>2. playlistName - Creator</p>
-          </div>
-        );
+            likedSongs = (
+              <div>
+                <p>1. Song 1 - Artist - Album</p>
+                <p>2. Song 2 - Artist - Album</p>
+              </div>
+          );
+        */
+        // likedSongs = (
+        // );
       } else {
-        likedSongs = (
+        header = (
           <div>
-            <p>No liked songs so far!</p>
+            <h4> Sorry, you're not logged in yet. </h4>
           </div>
         );
-
-        likedPlaylists = (
+        body = (
           <div>
-            <p>No liked Playlists so far!</p>
+            <p>Please sign up or login to see your personal playlist here!</p>
           </div>
         );
       }
 
         return (
           <div>
-
-            <h4>{user}'s Library </h4>
-            <h5>Liked Songs:</h5>
-                {likedSongs}
-            <h5> Liked Playlists: </h5>
-                {likedPlaylists}
+            {header}
+            <h5> {body} </h5>
+            <h5> {this.state.id} </h5>
           </div>
         );
     }

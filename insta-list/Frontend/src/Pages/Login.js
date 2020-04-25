@@ -4,10 +4,10 @@ import Form from 'react-bootstrap/Form'
 import Button from '@material-ui/core/Button';
 
 class Login extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
-      userName:'',
+      userName:'Albert',
       password:'',
       isLoggedIn: false
     }
@@ -16,10 +16,10 @@ class Login extends Component {
   sendInfo = (event) => {
 
     event.preventDefault()
-    fetch("http://localhost:3000/api/login") 
+    fetch("http://localhost:3000/api/login")
         .then(res => res.json())
-         .then(res=>{ 
-      if(res!= null) 
+         .then(res=>{
+      if(res!= null)
       { event.preventDefault()
         this.setState ({
           isLoggedIn: true
@@ -34,8 +34,8 @@ class Login extends Component {
     })
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-    
-   
+
+
     console.log("userName is: ", this.state.userName, " and password is: ", this.state.password);
   }
 
@@ -43,6 +43,7 @@ class Login extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
     render() {
+      console.log("is user loggedin?", this.state.isLoggedIn)
       let content;
       if(this.state.isLoggedIn) {
         content = (
