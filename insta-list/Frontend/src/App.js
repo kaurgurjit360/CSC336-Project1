@@ -4,6 +4,7 @@ import './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyLibraries from './Pages/MyLibraries';
 import Login from './Pages/Login';
+import SingUp from './Pages/SignUp'
 import Navbar_Homepage from './Components/Navbar_Homepage'
 import {
     BrowserRouter as Router,
@@ -39,6 +40,7 @@ class App extends React.Component{
                                 <Route path="/home" component={HomePage} />
                                 <Route path="/login" component={Login} />
                                 <Route path="/library" component={MyLibraries} />
+                                <Route path="/signup" component={SingUp}/>
                                 </Switch>
                             </div>
                         </div>
