@@ -5,43 +5,43 @@ const db = require("../models");
 //get all the genres
 router.get("/allgenre", (req, res) => {
     db.genre.findAll().then( genres => res.send(genres));
-  
+
     
 });
 
 //get all the songs
 router.get("/allsong", (req, res) => {
     db.song.findAll().then( songs => res.send(songs));
-  
-    
+
+
 });
 
 //get all the artist
 router.get("/allartist", (req, res) => {
     db.artist.findAll().then( artists => res.send(artists));
-  
-    
+
+
 });
 
 //get all the albums
 router.get("/allalbum", (req, res) => {
     db.album.findAll().then( albums => res.send(albums));
-  
-    
+
+
 });
 
 //get all the user
 router.get("/alluser", (req, res) => {
     db.user.findAll().then( artists => res.send(artists));
-  
-    
+
+
 });
 
 //get all the likesong
 router.get("/alllikesong", (req, res) => {
     db.likesong.findAll().then( artists => res.send(artists));
-  
-    
+
+
 });
 
 //get genre by name
@@ -106,7 +106,7 @@ router.post("/newsong", (req, res) => {
         song_name: req.body.song_name,
         albumId: req.body.albumId,
         artistId: req.body.artistId,
-       
+
 
     }).then( submittedsong => res.send(submittedsong));
 });
@@ -141,8 +141,12 @@ router.post("/newuser", (req, res) => {
         name: req.body.name,
         password: req.body.password
 
-    }).then( submittedalbum => res.send(submittedalbum));
+    })
+    .then( submitteduser => res.send(submitteduser));
 });
+
+
+
 
 //create an likeplaylist
 /*router.post("/newlikeplaylist", (req, res) => {
@@ -150,7 +154,7 @@ router.post("/newuser", (req, res) => {
         id: req.body.id,
         userId: req.body.usedId,
         songId: req.body.songId,
-       
+
     }).then( submittedalbum => res.send(submittedalbum));
 });
 */
@@ -183,11 +187,11 @@ router.delete("/deleteartist",(req,res)=> {
       where:{
           id: req.body.id
       }
-  
+
     }).then(()=>res.send("Success!"));
   });
 
-  
+
 //deleteing album
 
 router.delete("/deletealbum",(req,res)=> {
@@ -195,11 +199,11 @@ router.delete("/deletealbum",(req,res)=> {
       where:{
           id: req.body.id
       }
-  
+
     }).then(()=>res.send("Success!"));
   });
-  
-  
+
+
 //deleteing genre
 
 router.delete("/deletegenre",(req,res)=> {
@@ -207,11 +211,11 @@ router.delete("/deletegenre",(req,res)=> {
       where:{
           id: req.body.id
       }
-  
+
     }).then(()=>res.send("Success!"));
   });
-  
-  
+
+
 //deleteing likeplaylist
 /*
 router.delete("/deletesong",(req,res)=> {
@@ -219,11 +223,11 @@ router.delete("/deletesong",(req,res)=> {
       where:{
           id: req.body.id
       }
-  
+
     }).then(()=>res.send("Success!"));
   });
   */
-  
+
 //deleteing songs
 
 router.delete("/deletelikesong",(req,res)=> {
@@ -231,11 +235,11 @@ router.delete("/deletelikesong",(req,res)=> {
       where:{
           id: req.body.id
       }
-  
+
     }).then(()=>res.send("Success!"));
   });
-  
-  
+
+
 //deleteing user
 
 router.delete("/deleteuser",(req,res)=> {
@@ -243,9 +247,9 @@ router.delete("/deleteuser",(req,res)=> {
       where:{
           id: req.body.id
       }
-  
+
     }).then(()=>res.send("Success!"));
   });
-  
+
 
 module.exports = router;

@@ -19,7 +19,12 @@
     "sequelize": "^5.21.6"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "nodemon": "^2.0.3",
     "sequelize-cli": "^5.5.1"
+=======
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.3"
+>>>>>>> albertNewBranch
   }
 }

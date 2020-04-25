@@ -4,29 +4,65 @@ import Form from 'react-bootstrap/Form'
 import Button from '@material-ui/core/Button';
 
 class SignUp extends Component {
-  constructor(){
-    super(props);
-    this.state={
-      
+  constructor(props) {
+    super(props)
+    this.state = {
+      userName: '',
+      password: ''
     }
   }
 
-    render() {
-        return (
-          <Form>
-            <Form.Group controlId="formBasicName">
-              <Form.Label>Username</Form.Label>
-              <Form.Control type="username" placeholder="Username" />
-            </Form.Group>
+  changeHandler = (event) => {
+    this.setState({[event.target.name]: event.target.value})
+  }
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-            <Button variant="primary" type="submit" onClick={submitHandler}>
-              Submit
-            </Button>
-          </Form>
+  submitHandler = event => {
+    event.preventDefault()
+    console.log(this.state.userName)
+    console.log(this.state.password)
+    //axios.post()
+    
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("id", "");
+        urlencoded.append("name",this.state.userName);
+        urlencoded.append("password", this.state.password);
+
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: urlencoded,
+          redirect: 'follow'
+        };
+        fetch("http://localhost:3000/api/newuser", requestOptions)
+        .then(response => response.text())
+        .then(alert("Registration Succeed !"))
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+  }
+    render() {
+      const {userName, password} = this.state
+        return (
+          <div>
+            <form>
+              <div>
+                <p> Enter a username: </p>
+                <input type="text" name="userName" value={userName} onChange={this.changeHandler}/>
+                <p> </p>
+              </div>
+              <div>
+              <p> Enter a password: </p>
+                <input type="password" name="password" value={password} onChange={this.changeHandler}/>
+                <p> </p>
+              </div>
+                <Button variant="primary" type="submit" onClick={this.submitHandler}>
+                  Submit
+                </Button>
+            </form>
+          </div>
         );
     }
 }
