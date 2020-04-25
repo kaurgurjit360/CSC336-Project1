@@ -141,8 +141,12 @@ router.post("/newuser", (req, res) => {
         name: req.body.name,
         password: req.body.password
 
-    }).then( submittedalbum => res.send(submittedalbum));
+    })
+    .then( submitteduser => res.send(submitteduser));
 });
+
+
+
 
 //create an likeplaylist
 /*router.post("/newlikeplaylist", (req, res) => {

@@ -18,15 +18,30 @@ class SignUp extends Component {
 
   submitHandler = event => {
     event.preventDefault()
-    console.log(this.state)
+    console.log(this.state.userName)
+    console.log(this.state.password)
     //axios.post()
-    fetch("http://localhost:3000/api/alluser", this.state)
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("id", "");
+        urlencoded.append("name",this.state.userName);
+        urlencoded.append("password", this.state.password);
+
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: urlencoded,
+          redirect: 'follow'
+        };
+        fetch("http://localhost:3000/api/newuser", requestOptions)
+        .then(response => response.text())
+        .then(alert("Registration Succeed !"))
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
   }
     render() {
       const {userName, password} = this.state

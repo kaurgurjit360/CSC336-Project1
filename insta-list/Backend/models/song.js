@@ -27,7 +27,7 @@ const song = sequelize.define("song", {
          song.belongsTo(models.album,{foreginKey:'albumId', unique: true, allowNull:false, onDelete:'cascade'});
          song.belongsTo(models.artist,{foreginKey:'artistId', unique: true, allowNull: false, onDelete:'cascade'});
         // song.hasMany(models.likeplaylist,{foreginKey:'songId', primaryKey: true});      
-         song.hasMany(models.likesong,{foreginKey:'likedsongId', primary: true, allowNull: false, onDelete:'cascade'});
+         song.hasMany(models.likesong,{foreginKey:'likedsongId', unique: true, allowNull: false, onDelete:'cascade'});
          song.hasMany(models.genre,{foreginKey:'genreId', onDelete:'cascade'});
      }
     
