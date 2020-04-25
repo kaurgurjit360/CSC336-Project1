@@ -16,25 +16,33 @@ class Login extends Component {
   sendInfo = (event) => {
 
     event.preventDefault()
-    fetch("http://localhost:3000/api/login") 
-        .then(res => res.json())
-         .then(res=>{ 
-      if(res!= null) 
-      { event.preventDefault()
-        this.setState ({
-          isLoggedIn: true
-        })
-      }
-      else
-      {
-        event.preventDefault()
-        alert('Invalid username or password')
-      }
+    var myHeaders = new Headers();
 
-    })
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-    
+//var formdata = new FormData();  
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+ // body: formdata,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state.password, requestOptions)
+  .then(response => response.text())
+  .then(result => {
+    if(result!= null)
+    {
+        event.preventDefault()
+          this.setState({
+            isLoggedIn: true
+            })
+    }
+    else{
+      event.preventDefault()
+      alert('Invalid username or password')
+    }
+  })
+  .catch(error => console.log('error', error));
    
     console.log("userName is: ", this.state.userName, " and password is: ", this.state.password);
   }
