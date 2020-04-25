@@ -3,7 +3,8 @@ module.exports = (sequelize, Datatypes) => {
         id: {
             type: Datatypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            unique:'unique indexes'
         },
         genre_name: {
             type: Datatypes.STRING,
@@ -13,7 +14,7 @@ module.exports = (sequelize, Datatypes) => {
         songId:{	
             type: Datatypes.INTEGER,	
             allowNull:false,	
-            unique: true	
+            unique: 'unique indexes'	
         }
     });
     genre.associate = models => 

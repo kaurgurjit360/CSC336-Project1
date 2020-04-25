@@ -4,12 +4,13 @@ module.exports = (sequelize, Datatypes) => {
       userId:{
           type: Datatypes.INTEGER,
           primaryKey: true,
-          autoIncrement: false
+          autoIncrement: false,
+          unique:'unique indexes'
       },
       songId:{
           type: Datatypes.INTEGER,
           allowNull:false,
-          unique:true
+          unique:'unique indexes'
       }
            
         
@@ -19,15 +20,17 @@ module.exports = (sequelize, Datatypes) => {
             likesong.belongsTo(models.user,{
 
                 foreignKey:'userId',
-                unique:true,
-                allowNull:false
+                unique: 'unique indexes',
+                allowNull:false,
+                Ondelete: 'cascade'
             })
 
             likesong.belongsTo(models.song,{
 
                 foreginKey: 'songId'  ,
-                unique:true,
-                allowNull:false  
+                unique:'unique indexes',
+                allowNull:false,
+                Ondelete: 'cascade'
                 
             })
     

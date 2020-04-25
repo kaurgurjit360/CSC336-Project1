@@ -3,20 +3,20 @@ module.exports = (sequelize, Datatypes) => {
             id: {
                 type: Datatypes.INTEGER,
                 primaryKey: true,
-                autoIncrement: true
+                autoIncrement: 1
             },
             name: {
                 type: Datatypes.STRING,
                 allowNull: false,
-                primaryKey: false
+                unique: false
             },
             password: {
                 type: Datatypes.STRING,
-                allowNull: true
+                allowNull: false
         }
         });
          user.associate = models => {
-            user.hasMany(models.likesong,{foreginKey:'useId', allowNull:false, primaryKey:true});
+            user.hasMany(models.likesong,{foreginKey:'useId', allowNull:false, primarunqiyKey:true});
             
          }
         

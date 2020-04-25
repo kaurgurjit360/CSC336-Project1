@@ -3,7 +3,9 @@ const song = sequelize.define("song", {
         id: {
             type: Datatypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            unique: 'unique indexes'
+
         },
         song_name: {
             type: Datatypes.STRING,
@@ -13,13 +15,13 @@ const song = sequelize.define("song", {
          albumId: {
              type: Datatypes.INTEGER,
             allowNull: false,
-            unique: true
+            unique: 'unique indexes'
      },
 
      artistId: {
         type: Datatypes.INTEGER,
        allowNull: false,
-       unique: true
+       unique: 'unique indexes'
 }
     
     });

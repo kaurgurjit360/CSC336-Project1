@@ -20,7 +20,7 @@ module.exports = (sequelize, Datatypes) => {
              as: 'song',
             foreignKey: 'albumId',
             allowNull: false,
-            unqiue: true,
+            unqiue: 'unique indexes',
             onDelete:'Cascade'
             
         });
