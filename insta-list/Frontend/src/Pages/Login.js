@@ -16,6 +16,7 @@ class Login extends Component {
   sendInfo = (event) => {
 
     event.preventDefault()
+<<<<<<< HEAD
     fetch("http://localhost:3000/api/login")
         .then(res => res.json())
          .then(res=>{
@@ -36,6 +37,36 @@ class Login extends Component {
     .catch(error => console.log('error', error));
 
 
+=======
+    var myHeaders = new Headers();
+
+//var formdata = new FormData();  
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+ // body: formdata,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state.password, requestOptions)
+  .then(response => response.text())
+  .then(result => {
+    if(result!= null)
+    {
+        event.preventDefault()
+          this.setState({
+            isLoggedIn: true
+            })
+    }
+    else{
+      event.preventDefault()
+      alert('Invalid username or password')
+    }
+  })
+  .catch(error => console.log('error', error));
+   
+>>>>>>> e54359aa82666aeec1c954c3e2495f79f2a84bb1
     console.log("userName is: ", this.state.userName, " and password is: ", this.state.password);
   }
 

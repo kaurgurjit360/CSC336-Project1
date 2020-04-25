@@ -22,26 +22,30 @@ class SignUp extends Component {
     console.log(this.state.password)
     //axios.post()
     
-
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-        var urlencoded = new URLSearchParams();
-        urlencoded.append("id", "");
-        urlencoded.append("name",this.state.userName);
-        urlencoded.append("password", this.state.password);
-
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: urlencoded,
-          redirect: 'follow'
-        };
-        fetch("http://localhost:3000/api/newuser", requestOptions)
-        .then(response => response.text())
-        .then(alert("Registration Succeed !"))
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("id", "");
+    urlencoded.append("name", this.state.userName);
+    urlencoded.append("password", this.state.password);
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    };
+    
+    fetch("http://localhost:3000/api/newuser", requestOptions)
+      .then(response => response.text())
+      .then(result => {
+        if(result != null)
+        {
+          alert("Registered ! \n You can log in now ! ")
+        }
+      })
+      .catch(error => console.log('error', error));
   }
     render() {
       const {userName, password} = this.state
