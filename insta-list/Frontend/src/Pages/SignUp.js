@@ -4,14 +4,16 @@ import Form from 'react-bootstrap/Form'
 import Button from '@material-ui/core/Button';
 
 class SignUp extends Component {
+  constructor(){
+    super(props);
+    this.state={
+      
+    }
+  }
+
     render() {
         return (
           <Form>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-             </Form.Group>
-
             <Form.Group controlId="formBasicName">
               <Form.Label>Username</Form.Label>
               <Form.Control type="username" placeholder="Username" />
@@ -21,7 +23,7 @@ class SignUp extends Component {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder="Password" />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={submitHandler}>
               Submit
             </Button>
           </Form>
