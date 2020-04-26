@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
 import { DropdownButton } from 'react-bootstrap';
 import { ListGroup } from 'react-bootstrap';
-import Button from '@material-ui/core/Button';
+
 
 class HomePage extends Component {
     constructor() {
@@ -42,37 +42,33 @@ class HomePage extends Component {
     }
 
     selectHandler(evt){
-        //getting user Id from local storage
+      //getting user Id from local storage
+      if(localStorage.getItem('userId')===null) {
+        alert("Please log in !")
+      } else{
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-if(localStorage.getItem('userId')===null)
-{
-    alert("Please log in !")
-}
- else{
+        console.log("User Id : ",localStorage.getItem('userId'), "song id : ",evt)
 
-var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("id", "");
+        urlencoded.append("userId",localStorage.getItem('userId')); // its taking playlist id for now and it should be user id
+        urlencoded.append("songId", evt);
 
-console.log("User Id : ",localStorage.getItem('userId'), "song id : ",evt)
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: urlencoded,
+          redirect: 'follow'
+        };
 
-var urlencoded = new URLSearchParams();
-urlencoded.append("id", "");
-urlencoded.append("userId",localStorage.getItem('userId')); // its taking playlist id for now and it should be user id
-urlencoded.append("songId", evt);
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: urlencoded,
-  redirect: 'follow'
-};
-
-fetch("http://localhost:3000/api/newlikesong", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-    }
-}
+        fetch("http://localhost:3000/api/newlikesong", requestOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+        }
+      }
 
     render() {
         return (
@@ -86,18 +82,10 @@ fetch("http://localhost:3000/api/newlikesong", requestOptions)
             {
                 this.findSongs() ?
                this.findSongs().map(song => {
-               return  <ListGroup.Item >{song.song_name }{
-
-                 <Button variant="primary" type="submit" onClick={this.selectHandler}>
-                   Like Song
-                 </Button>
-                /*
-                 <DropdownButton style= {{float: "right"}} id="dropdown-basic-button" title="Add to Playlist" onSelect={this.selectHandler}>
+               return  <ListGroup.Item >{song.song_name }{<DropdownButton style= {{float: "right"}} id="dropdown-basic-button" title="Add to Playlist" onSelect={this.selectHandler}>
                                                           <Dropdown.Item eventKey={song.id} href="#/action-1" >Playlist 1</Dropdown.Item>
                                                           <Dropdown.Item  eventKey={song.id} href="#/action-2">Playlist 2</Dropdown.Item>
-                                                         </DropdownButton>
-                                                         */
-               }
+                                                         </DropdownButton>}
                         </ListGroup.Item>
                }) : <strong >SEARCH A SONG</strong>
             }
