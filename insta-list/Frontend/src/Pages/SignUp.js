@@ -13,13 +13,20 @@ class SignUp extends Component {
   }
 
   changeHandler = (event) => {
+    event.target.value=event.target.value.replace(/ /g,'')
     this.setState({[event.target.name]: event.target.value})
   }
 
   submitHandler = event => {
     event.preventDefault()
+
     console.log(this.state.userName)
     console.log(this.state.password)
+    if(this.state.userName===""||this.state.password==="")
+    {
+      alert("Please enter username and  password")
+    }
+    else{
     //axios.post()
 
     var myHeaders = new Headers();
@@ -46,6 +53,7 @@ class SignUp extends Component {
         }
       })
       .catch(error => console.log('error', error));
+    }
   }
     render() {
       const {userName, password} = this.state
@@ -54,13 +62,13 @@ class SignUp extends Component {
             <form>
               <div>
                 <p> Enter a username: </p>
-                <input type="text" name="userName" value={userName} onChange={this.changeHandler}/>
-                <p> </p>
+                <input type="text" name="userName" value={userName} pattern="[A-Za-z0-9]+" onChange={this.changeHandler}/>
+                <br/>
               </div>
               <div>
               <p> Enter a password: </p>
-                <input type="password" name="password" value={password} onChange={this.changeHandler}/>
-                <p> </p>
+                <input type="password" name="password" value={password} pattern="[A-Za-z0-9]+" onChange={this.changeHandler}/>
+                <br/>
               </div>
                 <Button variant="primary" type="submit" onClick={this.submitHandler}>
                   Submit
