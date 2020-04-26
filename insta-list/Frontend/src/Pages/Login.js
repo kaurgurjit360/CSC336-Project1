@@ -31,7 +31,7 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
   .then(response => response.text())
   .then(result => {
     let flag = result
-    console.log(flag) 
+    console.log(flag)
     if(flag.length)
     {
       event.persist()
@@ -46,7 +46,7 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
 
   })
   .catch(error => console.log('error', error));
-   
+
     console.log("userName is: ", this.state.userName, " and password is: ", this.state.password);
 
      // save info on local storage
