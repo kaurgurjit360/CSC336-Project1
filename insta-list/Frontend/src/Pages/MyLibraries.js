@@ -13,15 +13,14 @@ class MyLibraries extends Component {
   }
 
     render() {
-      let loggedIn = true;
+      let loggedIn = localStorage.getItem("userName") !==null;
       let user = "";
-      console.log(this.props.sampleFunctionParent);
       let header;
       let body;
       let likedSongs;
 
       if (loggedIn) {
-        user = "John Doe" // get username and replace here
+        user = localStorage.getItem("userName")
         header = (
           <div>
             <h4> {user}'s Playlist </h4>
@@ -60,7 +59,6 @@ class MyLibraries extends Component {
           <div>
             {header}
             <h5> {body} </h5>
-            <h5> {this.state.id} </h5>
           </div>
         );
     }
