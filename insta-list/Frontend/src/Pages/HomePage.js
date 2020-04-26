@@ -33,7 +33,7 @@ class HomePage extends Component {
         fetch("http://localhost:3000/api/allsong") 
         .then(res => res.json())
         .then(data => this.setState({ songs: data }))
-    }
+    }   
 
     render() {
         return (

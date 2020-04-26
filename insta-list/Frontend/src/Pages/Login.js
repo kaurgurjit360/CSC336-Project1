@@ -30,17 +30,20 @@ var requestOptions = {
 fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state.password, requestOptions)
   .then(response => response.text())
   .then(result => {
-    if(result!= null)
+    let flag = result
+    console.log(flag) 
+    if(flag.length)
     {
-        event.preventDefault()
+      event.persist()
           this.setState({
             isLoggedIn: true
             })
     }
-    else{
-      event.preventDefault()
-      alert('Invalid username or password')
+    else
+    {
+      alert("Not found ! ")
     }
+
   })
   .catch(error => console.log('error', error));
    

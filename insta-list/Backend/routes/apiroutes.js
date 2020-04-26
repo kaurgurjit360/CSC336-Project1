@@ -255,15 +255,28 @@ router.delete("/deleteuser",(req,res)=> {
 //login user authenication
 //get user by name
 
+
 router.get("/find/login/:name&:password", (req, res) => {
-    db.user.findAll({
+      user=db.user.findAll({
         where: {
             name: req.params.name,
-            password: req.params.password
-          
-            
+            password: req.params.password   
         }
-    }).then(users => res.send(users));
+        
+    }).then(users=>{
+        let user = users
+        if(user.length)
+        {
+            res.status(200).send(user)
+        }
+        else{
+
+            res.status(404).send()
+        }
+
+    });
+
+    
    
 });
 
