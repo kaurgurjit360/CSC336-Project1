@@ -14,8 +14,13 @@ class Login extends Component {
   }
 
   sendInfo = (event) => {
-
     event.preventDefault()
+    if(this.state.userName==="" || this.state.password==="")
+    {
+      alert("Please enter username and password ! ")
+    }
+    else{
+   
     var myHeaders = new Headers();
 
     //var formdata = new FormData();
@@ -54,7 +59,7 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
      localStorage.setItem('userName', userName);
      // localStorage.setItem('user', rememberMe ? user : '');
  }
-
+}
  logOut = (event) => {
    event.preventDefault()
    const { userName, password, isLoggedIn } = this.state;
