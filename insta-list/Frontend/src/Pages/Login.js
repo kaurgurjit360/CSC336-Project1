@@ -7,6 +7,7 @@ class Login extends Component {
   constructor() {
     super()
     this.state = {
+      userId:'',
       userName:'',
       password:'',
       isLoggedIn: false
@@ -35,12 +36,12 @@ class Login extends Component {
 fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state.password, requestOptions)
   .then(response => response.text())
   .then(result => {
-    let flag = result
-    console.log(flag) 
+     let flag = result
     if(flag.length)
     {
       event.persist()
           this.setState({
+            //userId: result.getItem('userId'), // might not work
             isLoggedIn: true
             })
     }
@@ -55,8 +56,9 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
     console.log("userName is: ", this.state.userName, " and password is: ", this.state.password);
 
      // save info on local storage
-     const { userName, password, isLoggedIn } = this.state;
+     const { userId,userName, password, isLoggedIn } = this.state;
      localStorage.setItem('userName', userName);
+     localStorage.setItem('userId',userId);
      // localStorage.setItem('user', rememberMe ? user : '');
  }
 }

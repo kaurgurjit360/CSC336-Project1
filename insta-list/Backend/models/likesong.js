@@ -1,44 +1,36 @@
 module.exports = (sequelize, Datatypes) => {
     const likesong = sequelize.define("likesong", {
-       
-      userId:{
-          type: Datatypes.INTEGER,
-          primaryKey: true,
-          autoIncrement: false,
-          unique:'unique indexes'
-      },
-      songId:{
-          type: Datatypes.INTEGER,
-          allowNull:false,
-          unique:'unique indexes'
-      }
+        id: {
+            type: Datatypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
            
+
+        },  
+          
+        userId: {
+                 type: Datatypes.INTEGER,
+                allowNull:true,
+                unique: 'unqiue indexes', 
+                allowNull:false, 
+                onDelete:'cascade'
+                
+         },
+    
+         songId: {
+            type: Datatypes.INTEGER,
+            allowNull: true,
+            unique: 'unqiue indexes', 
+            allowNull:false, 
+            onDelete:'cascade'
+    }
         
         });
          likesong.associate = models => {
+             likesong.belongsTo(models.user,{foreginKey:'userId', unique: 'unqiue indexes', allowNull:false, onDelete:'cascade'});
+             likesong.belongsTo(models.song,{foreginKey:'songId', unique: 'unique indexes', allowNull: false, onDelete:'cascade'});
             
-            likesong.belongsTo(models.user,{
-
-                foreignKey:'userId',
-                unique: 'unique indexes',
-                allowNull:false,
-                Ondelete: 'cascade'
-            })
-
-            likesong.belongsTo(models.song,{
-
-                foreginKey: 'songId'  ,
-                unique:'unique indexes',
-                allowNull:false,
-                Ondelete: 'cascade'
-                
-            })
-    
-             
-            
-            };
-          
-         
+         }
         
         return likesong;
     }
