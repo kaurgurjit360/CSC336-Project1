@@ -4,8 +4,13 @@ import { Navbar } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 
 export default class Navbar_Homepage extends Component {
-    render() {
 
+  sampleFunctionChild() {
+    console.log("Sample function child")
+  }
+
+    render() {
+      console.log("This is a new page!")
         return (
             <div>
                   <Navbar bg="primary" variant="dark">
