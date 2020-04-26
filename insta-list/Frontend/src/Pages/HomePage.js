@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
 import { DropdownButton } from 'react-bootstrap';
 import { ListGroup } from 'react-bootstrap';
-
+import Button from '@material-ui/core/Button';
 
 class HomePage extends Component {
     constructor() {
@@ -22,33 +22,33 @@ class HomePage extends Component {
     }
     //this is checking, if a user typed anything the search form. the array result will check if the song names from our song table are EQUAL to what is typed in the search. It will return a filtered array of those results
     findSongs = () => {
-        if(this.state.search) { 
+        if(this.state.search) {
         let result = this.state.songs.filter(song => {
-         return song.song_name.includes(this.state.search) 
+         return song.song_name.includes(this.state.search)
             })
            return result
         }
     }
     //this is feteching all the songs from the db and giving was a JSON form of them. Then its setting the state of the songs to whatever is in the DB
     componentDidMount() {
-        
-        fetch("http://localhost:3000/api/allsong") 
+
+        fetch("http://localhost:3000/api/allsong")
         .then(res => res.json())
         .then(data => this.setState({ songs: data }))
 
-        //checking if the local storage if userid is there or not 
-      
-         
+        //checking if the local storage if userid is there or not
+
+
     }
-    
+
     selectHandler(evt){
         //getting user Id from local storage
-        
+
 if(localStorage.getItem('userId')===null)
 {
     alert("Please log in !")
 }
- else{      
+ else{
 
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -57,7 +57,7 @@ console.log("User Id : ",localStorage.getItem('userId'), "song id : ",evt)
 
 var urlencoded = new URLSearchParams();
 urlencoded.append("id", "");
-urlencoded.append("userId",localStorage.getItem('userId')); // its taking playlist id for now and it should be user id 
+urlencoded.append("userId",localStorage.getItem('userId')); // its taking playlist id for now and it should be user id
 urlencoded.append("songId", evt);
 
 var requestOptions = {
@@ -81,29 +81,37 @@ fetch("http://localhost:3000/api/newlikesong", requestOptions)
          <Form.Group>
                 <Form.Control value ={this.state.search} onChange={this.handleChange} size="lg" type="text" placeholder="Search Songs" />
         </Form.Group>
-        {/* Below we are mapping through the filtered songs and as we map through them, we are adding them to the LIST. Next to each item in the list we add a dropdown button */} 
+        {/* Below we are mapping through the filtered songs and as we map through them, we are adding them to the LIST. Next to each item in the list we add a dropdown button */}
         <ListGroup>
             {
-                this.findSongs() ? 
+                this.findSongs() ?
                this.findSongs().map(song => {
-               return  <ListGroup.Item >{song.song_name }{<DropdownButton style= {{float: "right"}} id="dropdown-basic-button" title="Add to Playlist" onSelect={this.selectHandler}>
+               return  <ListGroup.Item >{song.song_name }{
+
+                 <Button variant="primary" type="submit" onClick={this.selectHandler}>
+                   Like Song
+                 </Button>
+                /*
+                 <DropdownButton style= {{float: "right"}} id="dropdown-basic-button" title="Add to Playlist" onSelect={this.selectHandler}>
                                                           <Dropdown.Item eventKey={song.id} href="#/action-1" >Playlist 1</Dropdown.Item>
                                                           <Dropdown.Item  eventKey={song.id} href="#/action-2">Playlist 2</Dropdown.Item>
-                                                         </DropdownButton>}
+                                                         </DropdownButton>
+                                                         */
+               }
                         </ListGroup.Item>
                }) : <strong >SEARCH A SONG</strong>
-            }   
+            }
         </ListGroup>
         {/* <h4> See all artists </h4>
         <ListGroup>
                 <ListGroup.Item>artist1</ListGroup.Item>
                 <ListGroup.Item>artist2</ListGroup.Item>
-        </ListGroup>   
+        </ListGroup>
         <h4> See all albums </h4>
         <ListGroup>
                 <ListGroup.Item>album1</ListGroup.Item>
                 <ListGroup.Item>album</ListGroup.Item>
-        </ListGroup>     
+        </ListGroup>
         <h4> See all genres </h4>
         <ListGroup>
                 <ListGroup.Item>genres1</ListGroup.Item>
@@ -116,5 +124,3 @@ fetch("http://localhost:3000/api/newlikesong", requestOptions)
 }
 
 export default HomePage;
-
-
