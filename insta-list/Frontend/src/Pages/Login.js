@@ -41,7 +41,7 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
     }
     else
     {
-      alert("Not found ! ")
+      alert("Invalid username or password! ")
     }
 
   })
