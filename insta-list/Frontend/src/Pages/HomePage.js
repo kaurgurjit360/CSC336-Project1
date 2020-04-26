@@ -3,8 +3,7 @@ import { Form } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
 import { DropdownButton } from 'react-bootstrap';
 import { ListGroup } from 'react-bootstrap';
-import Button from '@material-ui/core/Button';
-
+import {Button} from 'react-bootstrap'
 class HomePage extends Component {
     constructor() {
             super()
@@ -41,24 +40,26 @@ class HomePage extends Component {
 
     }
 
-    selectHandler(evt){
+clickHandler=(evt)=>{
         //getting user Id from local storage
 
-if(localStorage.getItem('userId')===null)
+ console.log("User Id : ",localStorage.getItem('userId'), "song id : ",evt.target.id)
+ if(localStorage.getItem('userId')===null)
 {
     alert("Please log in !")
 }
  else{
 
+
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-console.log("User Id : ",localStorage.getItem('userId'), "song id : ",evt)
+
 
 var urlencoded = new URLSearchParams();
 urlencoded.append("id", "");
 urlencoded.append("userId",localStorage.getItem('userId')); // its taking playlist id for now and it should be user id
-urlencoded.append("songId", evt);
+urlencoded.append("songId", evt.target.id);
 
 var requestOptions = {
   method: 'POST',
@@ -72,6 +73,7 @@ fetch("http://localhost:3000/api/newlikesong", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
     }
+
 }
 
     render() {
@@ -88,7 +90,7 @@ fetch("http://localhost:3000/api/newlikesong", requestOptions)
                this.findSongs().map(song => {
                return  <ListGroup.Item >{song.song_name }{
 
-                 <Button variant="primary" type="submit" onClick={this.selectHandler}>
+                 <Button id={song.id} type="button" onClick={this.clickHandler}>
                    Like Song
                  </Button>
                 /*
