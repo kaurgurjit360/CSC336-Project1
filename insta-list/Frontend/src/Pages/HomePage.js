@@ -9,7 +9,7 @@ class HomePage extends Component {
     constructor() {
             super()
             this.state = {
-                userId:[],
+                user:[],
                 search: "",
                 songs: []
             }

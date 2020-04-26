@@ -59,19 +59,26 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
      const { userId,userName, password, isLoggedIn } = this.state;
      localStorage.setItem('userName', userName);
      localStorage.setItem('userId',userId);
+     
+     if (isLoggedIn) {
+      localStorage.setItem('userName', userName);
+      localStorage.setItem('userId',userId);
+}
      // localStorage.setItem('user', rememberMe ? user : '');
  }
 }
  logOut = (event) => {
    event.preventDefault()
-   const { userName, password, isLoggedIn } = this.state;
+   const { userId,userName, password, isLoggedIn } = this.state;
    localStorage.removeItem(userName);
    localStorage.removeItem('userName')
    this.setState({
+     userId:'',
      userName:'',
      password:'',
      isLoggedIn: false
    })
+  
   }
 
   changeHandler = (event) => {
@@ -92,6 +99,21 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
       console.log("FAILURE!")
       this.setState({
         userName: localStorage.getItem("userName"),
+        isLoggedIn: true
+      })
+    }
+    
+    if (localStorage.getItem("userId")===null) {
+      this.setState({
+        userId:'',
+        isLoggedIn: false
+      })
+      console.log("SUCCESS")
+    }
+    else {
+      console.log("FAILURE!")
+      this.setState({
+        userId: localStorage.getItem("userId"),
         isLoggedIn: true
       })
     }
