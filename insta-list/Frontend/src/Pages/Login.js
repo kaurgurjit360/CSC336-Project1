@@ -21,7 +21,7 @@ class Login extends Component {
       alert("Please enter username and password ! ")
     }
     else{
-   
+
     var myHeaders = new Headers();
 
     //var formdata = new FormData();
@@ -36,7 +36,8 @@ class Login extends Component {
 fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state.password, requestOptions)
   .then(response => response.text())
   .then(result => {
-     let flag = result
+    let flag = result
+    console.log(flag)
     if(flag.length)
     {
       event.persist()
@@ -52,19 +53,16 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
 
   })
   .catch(error => console.log('error', error));
-   
+
     console.log("userName is: ", this.state.userName, " and password is: ", this.state.password);
 
      // save info on local storage
      const { userId,userName, password, isLoggedIn } = this.state;
-     localStorage.setItem('userName', userName);
-     localStorage.setItem('userId',userId);
-     
      if (isLoggedIn) {
-      localStorage.setItem('userName', userName);
-      localStorage.setItem('userId',userId);
-}
-     // localStorage.setItem('user', rememberMe ? user : '');
+       localStorage.setItem('userName', userName);
+       localStorage.setItem('userId',userId);
+       // localStorage.setItem('user', rememberMe ? user : '');
+    }
  }
 }
  logOut = (event) => {
