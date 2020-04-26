@@ -7,6 +7,7 @@ class Login extends Component {
   constructor() {
     super()
     this.state = {
+      userId:'',
       userName:'',
       password:'',
       isLoggedIn: false
@@ -20,7 +21,7 @@ class Login extends Component {
       alert("Please enter username and password ! ")
     }
     else{
-   
+
     var myHeaders = new Headers();
 
     //var formdata = new FormData();
@@ -41,6 +42,7 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
     {
       event.persist()
           this.setState({
+            //userId: result.getItem('userId'), // might not work
             isLoggedIn: true
             })
     }
@@ -55,8 +57,9 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
     console.log("userName is: ", this.state.userName, " and password is: ", this.state.password);
 
      // save info on local storage
-     const { userName, password, isLoggedIn } = this.state;
+     const { userId,userName, password, isLoggedIn } = this.state;
      localStorage.setItem('userName', userName);
+     localStorage.setItem('userId',userId);
      // localStorage.setItem('user', rememberMe ? user : '');
  }
 }

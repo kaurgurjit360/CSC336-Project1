@@ -161,11 +161,12 @@ router.post("/newuser", (req, res) => {
 //create an likesong
 router.post("/newlikesong", (req, res) => {
     db.likesong.create({
-        id: req.body.id,
-        userId: req.body.usedId,
-        songId: req.body.songId,
-        playlistId: req.body.playlistId
-    }).then( submittedalbum => res.send(submittedalbum));
+        id:req.body.id,
+        userId: req.body.userId,
+        songId: req.body.songId
+
+    })
+    .then( submittedlike => res.send(submittedlike));
 });
 
 //deleteing songs
@@ -253,7 +254,7 @@ router.delete("/deleteuser",(req,res)=> {
 
 
 //login user authenication
-//get user by name
+//get user and password
 
 
 router.get("/find/login/:name&:password", (req, res) => {
@@ -267,6 +268,7 @@ router.get("/find/login/:name&:password", (req, res) => {
         let user = users
         if(user.length)
         {
+            
             res.status(200).send(user)
         }
         else{

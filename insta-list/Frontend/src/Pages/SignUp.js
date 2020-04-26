@@ -49,7 +49,7 @@ class SignUp extends Component {
       .then(result => {
         if(result != null)
         {
-          alert("Registered ! \n You can log in now ! ")
+          alert("Registered !\nYou can log in now ! ")
         }
       })
       .catch(error => console.log('error', error));
@@ -59,7 +59,7 @@ class SignUp extends Component {
       const {userName, password} = this.state
         return (
           <div>
-            <form>
+            <form >
               <div>
                 <p> Enter a username: </p>
                 <input type="text" name="userName" value={userName} pattern="[A-Za-z0-9]+" onChange={this.changeHandler}/>

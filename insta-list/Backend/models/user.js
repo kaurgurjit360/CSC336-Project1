@@ -17,8 +17,14 @@ module.exports = (sequelize, Datatypes) => {
         }
         });
          user.associate = models => {
-            user.hasMany(models.likesong,{foreginKey:'useId', allowNull:false, primarunqiyKey:true});
+            user.hasMany(models.likesong, {
             
+               foreignKey: 'userId',
+               allowNull: false,
+               unqiue: 'unique indexes',
+               onDelete:'cascade'
+               
+           })
          }
         
         return user;

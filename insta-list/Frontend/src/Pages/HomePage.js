@@ -9,6 +9,7 @@ class HomePage extends Component {
     constructor() {
             super()
             this.state = {
+                userId:[],
                 search: "",
                 songs: []
             }
@@ -33,7 +34,31 @@ class HomePage extends Component {
         fetch("http://localhost:3000/api/allsong") 
         .then(res => res.json())
         .then(data => this.setState({ songs: data }))
-    }   
+    }
+    
+    selectHandler(evt){
+
+        var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+
+var urlencoded = new URLSearchParams();
+urlencoded.append("id", "");
+urlencoded.append("userId",evt[0]); // its taking playlist id for now and it should be user id 
+urlencoded.append("songId", evt[2]);
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: urlencoded,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:3000/api/newlikesong", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+    }
 
     render() {
         return (
@@ -47,9 +72,9 @@ class HomePage extends Component {
             {
                 this.findSongs() ? 
                this.findSongs().map(song => {
-               return  <ListGroup.Item>{song.song_name } { <DropdownButton style= {{float: "right"}} id="dropdown-basic-button" title="Add to Playlist">
-                                                          <Dropdown.Item href="#/action-1">Playlist 1</Dropdown.Item>
-                                                          <Dropdown.Item href="#/action-2">Playlist 2</Dropdown.Item>
+               return  <ListGroup.Item >{song.song_name }{<DropdownButton style= {{float: "right"}} id="dropdown-basic-button" title="Add to Playlist" onSelect={this.selectHandler}>
+                                                          <Dropdown.Item eventKey={[song.id,1]} href="#/action-1" >Playlist 1</Dropdown.Item>
+                                                          <Dropdown.Item  eventKey={[song.id,2]} href="#/action-2">Playlist 2</Dropdown.Item>
                                                          </DropdownButton>}
                         </ListGroup.Item>
                }) : <strong >SEARCH A SONG</strong>
