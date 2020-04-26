@@ -269,11 +269,11 @@ router.get("/find/login/:name&:password", (req, res) => {
         if(user.length)
         {
             
-            res.status(200).send(user)
+            res.send(users)
         }
         else{
 
-            res.status(404).send()
+            res.send()
         }
 
     });

@@ -9,7 +9,7 @@ class HomePage extends Component {
     constructor() {
             super()
             this.state = {
-                user:[],
+                userId:null,
                 search: "",
                 songs: []
             }
@@ -31,21 +31,34 @@ class HomePage extends Component {
     }
     //this is feteching all the songs from the db and giving was a JSON form of them. Then its setting the state of the songs to whatever is in the DB
     componentDidMount() {
+        
         fetch("http://localhost:3000/api/allsong") 
         .then(res => res.json())
         .then(data => this.setState({ songs: data }))
+
+        //checking if the local storage if userid is there or not 
+      
+         
     }
     
     selectHandler(evt){
+        //getting user Id from local storage
+        
+if(localStorage.getItem('userId')===null)
+{
+    alert("Please log in !")
+}
+ else{      
 
-        var myHeaders = new Headers();
+var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
+console.log("User Id : ",localStorage.getItem('userId'), "song id : ",evt)
 
 var urlencoded = new URLSearchParams();
 urlencoded.append("id", "");
-urlencoded.append("userId",evt[0]); // its taking playlist id for now and it should be user id 
-urlencoded.append("songId", evt[2]);
+urlencoded.append("userId",localStorage.getItem('userId')); // its taking playlist id for now and it should be user id 
+urlencoded.append("songId", evt);
 
 var requestOptions = {
   method: 'POST',
@@ -59,6 +72,7 @@ fetch("http://localhost:3000/api/newlikesong", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
     }
+}
 
     render() {
         return (
@@ -73,8 +87,8 @@ fetch("http://localhost:3000/api/newlikesong", requestOptions)
                 this.findSongs() ? 
                this.findSongs().map(song => {
                return  <ListGroup.Item >{song.song_name }{<DropdownButton style= {{float: "right"}} id="dropdown-basic-button" title="Add to Playlist" onSelect={this.selectHandler}>
-                                                          <Dropdown.Item eventKey={[song.id,1]} href="#/action-1" >Playlist 1</Dropdown.Item>
-                                                          <Dropdown.Item  eventKey={[song.id,2]} href="#/action-2">Playlist 2</Dropdown.Item>
+                                                          <Dropdown.Item eventKey={song.id} href="#/action-1" >Playlist 1</Dropdown.Item>
+                                                          <Dropdown.Item  eventKey={song.id} href="#/action-2">Playlist 2</Dropdown.Item>
                                                          </DropdownButton>}
                         </ListGroup.Item>
                }) : <strong >SEARCH A SONG</strong>
