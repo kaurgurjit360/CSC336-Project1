@@ -58,9 +58,11 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
 
      // save info on local storage
      const { userId,userName, password, isLoggedIn } = this.state;
-     localStorage.setItem('userName', userName);
-     localStorage.setItem('userId',userId);
-     // localStorage.setItem('user', rememberMe ? user : '');
+     if (isLoggedIn) {
+       localStorage.setItem('userName', userName);
+       localStorage.setItem('userId',userId);
+       // localStorage.setItem('user', rememberMe ? user : '');
+    }
  }
 }
  logOut = (event) => {
