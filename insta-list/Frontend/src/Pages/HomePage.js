@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 import { Form } from 'react-bootstrap';
-import { Dropdown } from 'react-bootstrap';
-import { DropdownButton } from 'react-bootstrap';
 import { ListGroup } from 'react-bootstrap';
 import {Button} from 'react-bootstrap'
 class HomePage extends Component {
@@ -76,53 +74,34 @@ fetch("http://localhost:3000/api/newlikesong", requestOptions)
 
 }
 
-    render() {
-        return (
-        <div>
-         <br/>
-         <Form.Group>
-                <Form.Control value ={this.state.search} onChange={this.handleChange} size="lg" type="text" placeholder="Search Songs" />
-        </Form.Group>
-        {/* Below we are mapping through the filtered songs and as we map through them, we are adding them to the LIST. Next to each item in the list we add a dropdown button */}
-        <ListGroup>
-            {
-                this.findSongs() ?
-               this.findSongs().map(song => {
-               return  <ListGroup.Item >{song.song_name }{
 
-                 <Button id={song.id} type="button" onClick={this.clickHandler}>
-                   Like Song
-                 </Button>
-                /*
-                 <DropdownButton style= {{float: "right"}} id="dropdown-basic-button" title="Add to Playlist" onSelect={this.selectHandler}>
-                                                          <Dropdown.Item eventKey={song.id} href="#/action-1" >Playlist 1</Dropdown.Item>
-                                                          <Dropdown.Item  eventKey={song.id} href="#/action-2">Playlist 2</Dropdown.Item>
-                                                         </DropdownButton>
-                                                         */
-               }
-                        </ListGroup.Item>
-               }) : <strong >SEARCH A SONG</strong>
-            }
-        </ListGroup>
-        {/* <h4> See all artists </h4>
-        <ListGroup>
-                <ListGroup.Item>artist1</ListGroup.Item>
-                <ListGroup.Item>artist2</ListGroup.Item>
-        </ListGroup>
-        <h4> See all albums </h4>
-        <ListGroup>
-                <ListGroup.Item>album1</ListGroup.Item>
-                <ListGroup.Item>album</ListGroup.Item>
-        </ListGroup>
-        <h4> See all genres </h4>
-        <ListGroup>
-                <ListGroup.Item>genres1</ListGroup.Item>
-                <ListGroup.Item>genres2</ListGroup.Item>
-        </ListGroup>   */}
-        </div>
-        );
-    }
 
+render() {
+    return (
+    <div>
+     <br/>
+     <Form.Group>
+            <Form.Control value ={this.state.search} onChange={this.handleChange} size="lg" type="text" placeholder="Search Songs" />
+    </Form.Group>
+    {/* Below we are mapping through the filtered songs and as we map through them, we are adding them to the LIST. Next to each item in the list we add a dropdown button */}
+    <ListGroup>
+        {
+            this.findSongs() ?
+           this.findSongs().map(song => {
+           return  <ListGroup.Item >{song.song_name }{
+
+             <Button id={song.id} type="button" onClick={this.clickHandler}>
+               Like Song
+             </Button>
+         
+           }
+                    </ListGroup.Item>
+           }) : <strong >SEARCH A SONG</strong>
+        }
+    </ListGroup>
+   
+    </div>
+    );
 }
-
+}
 export default HomePage;

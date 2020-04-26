@@ -21,7 +21,7 @@ class Login extends Component {
       alert("Please enter username and password ! ")
     }
     else{
-   
+
     var myHeaders = new Headers();
 
     //var formdata = new FormData();
@@ -40,14 +40,14 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
     if(flag.length)
     {
       result=JSON.parse(result)
-      
+
       event.persist()
-        
+
           this.setState({
             userId: result[0].id,
             isLoggedIn: true
             })
-            
+
     }
     else
     {
@@ -55,18 +55,18 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
     }
 
   })
-  .then(()=>{ 
+  .then(()=>{
     // save info on local storage
     const { userId,userName, password, isLoggedIn } = this.state;
     localStorage.setItem('userName', userName);
     localStorage.setItem('userId',userId)
-   
+
    })
   .catch(error => console.log('error', error));
-   
+
     console.log("userName is: ", this.state.userName, " and password is: ", this.state.password);
 
-    
+
      // localStorage.setItem('user', rememberMe ? user : '');
  }
 }
@@ -74,11 +74,9 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
    event.preventDefault()
    const { userId,userName, password, isLoggedIn } = this.state;
    localStorage.removeItem(userName);
-   localStorage.removeItem('userName')  
+   localStorage.removeItem('userName')
    localStorage.removeItem('userId')
-  
-   
-   
+
    this.setState({
      userName:'',
      password:'',
@@ -108,7 +106,7 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
         isLoggedIn: true
       })
     }
-   
+
     // const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     // const userName = isLoggedIn ? localStorage.getItem('userName') : '';
     // this.setState({ userName, isLoggedIn });
@@ -119,7 +117,7 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
 
     let content;
     if(this.state.isLoggedIn) {
-     
+
       content = (
         <div>
           <p> Welcome, {this.state.userName}! </p>
