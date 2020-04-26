@@ -73,6 +73,7 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
   }
 
   changeHandler = (event) => {
+    event.target.value=event.target.value.replace(/ /g,'')
     this.setState({[event.target.name]: event.target.value})
   }
 
@@ -118,10 +119,10 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
         <div>
           <form>
             <p> Enter a username: </p>
-            <input type="text" name="userName" value={this.state.userName} onChange={this.changeHandler}/>
+            <input type="text" name="userName" value={this.state.userName} pattern="[A-Za-z0-9]+" onChange={this.changeHandler}/>
             <br/>
             <p> Enter a password: </p>
-            <input type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
+            <input type="password" name="password" value={this.state.password} pattern="[A-Za-z0-9]+" onChange={this.changeHandler}/>
             <br/>
             <Button variant="primary" type="submit" onClick={this.sendInfo}>
               Submit
