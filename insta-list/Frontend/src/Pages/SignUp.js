@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Navbar_Homepage from '../Components/Navbar_Homepage.js'
-import Form from 'react-bootstrap/Form'
 import Button from '@material-ui/core/Button';
 
 class SignUp extends Component {

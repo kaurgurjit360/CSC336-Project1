@@ -4,7 +4,6 @@ import './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyLibraries from './Pages/MyLibraries';
 import Login from './Pages/Login';
-import SingUp from './Pages/SignUp'
 import Navbar_Homepage from './Components/Navbar_Homepage'
 import SignUp from './Pages/SignUp'
 

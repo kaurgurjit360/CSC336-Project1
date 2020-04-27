@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { Form } from 'react-bootstrap';
+
 import { ListGroup } from 'react-bootstrap';
 import {Button} from 'react-bootstrap'
 class HomePage extends Component {
@@ -68,7 +69,7 @@ var requestOptions = {
 
 fetch("http://localhost:3000/api/newlikesong", requestOptions)
   .then(response => response.text())
-  .then(result => console.log(result))
+  .then(result => alert("Added to liked songs"))
   .catch(error => console.log('error', error));
     }
 

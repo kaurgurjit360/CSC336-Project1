@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Nav } from 'react-bootstrap';
 import { Navbar } from 'react-bootstrap';
-import Button from '@material-ui/core/Button';
 
 export default class Navbar_Homepage extends Component {
 

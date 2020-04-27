@@ -39,10 +39,43 @@ router.get("/alluser", (req, res) => {
 
 //get all the likesong
 router.get("/alllikesong", (req, res) => {
-    db.likesong.findAll().then( artists => res.send(artists));
+    db.likesong.findAll().then( likesongs => res.send(likesongs));
 
 
 });
+
+//get all the song,album, and artist details  by userid in likesong
+
+
+
+
+
+router.get("/likesongdetail/:userId", (req, res) => {
+    db.likesong.findAll({
+        where: { userId: req.params.userId},
+        
+        include: [
+        {
+            model:db.song, 
+            include:[
+                {model:db.album},
+                {
+                    model:db.artist
+                }
+
+            ]
+            
+        },
+        
+    ]
+}
+
+    ).then( likesongs => res.send(likesongs));
+
+
+});
+
+
 
 //get genre by name
 router.get("/find/genre/:genre_name", (req, res) => {
@@ -247,6 +280,17 @@ router.delete("/deleteuser",(req,res)=> {
     db.user.destroy({
       where:{
           id: req.body.id
+      }
+
+    }).then(()=>res.send("Success!"));
+  });
+
+//unliking songs
+
+router.delete("/deletelikesong",(req,res)=> {
+    db.user.destroy({
+      where:{
+        id: req.body.id
       }
 
     }).then(()=>res.send("Success!"));
