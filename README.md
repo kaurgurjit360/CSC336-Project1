@@ -23,7 +23,7 @@ InstaList is a web application that allows users to create their own personal pl
 
 ## Instructions
 
-To use the software for this application, first clone the git repository into your own machine. Then, change directories into CSC336-Project1/insta-list/Frontend and install the nodejs dependencies in the local node_modules folder running npm install in the command line. Then, run npm start to get the application running in your local machine. The web application should then open up on a local host on the browser, or you can also head to http://www.localhost:3000. Finally, you can navigate through the different parts of the application using the navigation bar at the top.
+To use the software for this application, first clone the git repository into your own machine. Then, change directories into CSC336-Project1/insta-list/Frontend and install the nodejs dependencies in the local node_modules folder running npm install in the command line. Then, run npm start to get the application running in your local machine. The web application should then open up on a local host on the browser, or you can also head to http://www.localhost:3000. Finally, you can navigate through the differe
 
 The ideal flow of the application would consist of first signing up on the application (or logging in if user is already registered), then heading to the home page to search for songs. As users find song titles they are into, they can click on the "Like Song" button to add them to their personal playlist. When they head to the "My Library" page, they will see all their liked songs there, and be able to unlike a song if they want to.
 
