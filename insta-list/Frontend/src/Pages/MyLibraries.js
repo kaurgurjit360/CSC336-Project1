@@ -61,8 +61,10 @@ fetch("http://localhost:3000/api/deletelikesong", requestOptions)
       
       if (this.state.loggedIn) {
         header = (
-          <div>
-            <h4> {this.state.userName}'s Playlist </h4>
+          <div style={{color: "white"}}>
+            <br />
+            <h3> {this.state.userName}'s liked songs </h3>
+            <br />
           </div>
         );
         songs = [1] // array that will contain all the songs that the user has
@@ -81,16 +83,12 @@ fetch("http://localhost:3000/api/deletelikesong", requestOptions)
             <ListGroup>{
             this.state.likesongs ?
             this.state.likesongs.map(likesongs => {
-                  return  <ListGroup.Item ><strong >SONG NAME: </strong>{likesongs.song.song_name}{
+                  return  <ListGroup.Item ><h5><strong >SONG NAME: </strong>{likesongs.song.song_name} </h5>
+                    <h6><strong >ALBUM NAME : </strong>{likesongs.song.album.album_name } </h6>
+                    <h6><strong >ARTIST NAME : </strong>{likesongs.song.artist.artist_name }</h6>
                     <Button id={likesongs.id} type="button" onClick={this.unlikeSong}>
                       Unlike Song
                     </Button>
-                    }
-                    <br/>
-                    <strong >ALBUM NAME : </strong>{likesongs.song.album.album_name }
-                    <br/>
-                    <strong >ARTIST NAME : </strong>{likesongs.song.artist.artist_name }
-                  
                     </ListGroup.Item>
            }) : <strong >LIKED SONG</strong>
         }
@@ -102,13 +100,15 @@ fetch("http://localhost:3000/api/deletelikesong", requestOptions)
         }
       } else {
         header = (
-          <div>
-            <h4> Sorry, you're not logged in yet. </h4>
+          <div style={{color: "white"}}>
+                      <br/>
+            <h2> Sorry, you're not logged in yet. </h2>
           </div>
         );
         body = (
-          <div>
-            <p>Please sign up or login to see your personal playlist here!</p>
+          <div style={{color: "white"}}>
+            <br/>
+            <h5>Please sign up or login to see your personal playlist here!</h5>
           </div>
         );
       }

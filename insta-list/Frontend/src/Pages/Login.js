@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import { Form } from 'react-bootstrap';
 
 class Login extends Component {
   constructor() {
@@ -118,12 +119,16 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
 
       content = (
         <div>
-          <p> Welcome, {this.state.userName}! </p>
-          <p> </p>
+          <br />
+          <br />
+          <div style={{color: "white"}}>
+          <h3> Welcome, {this.state.userName}! </h3>
+          <br />
           <p> Go to the homepage to search for songs and add them to your playlist! </p>
-          <Button variant="primary" type="submit" onClick={this.logOut}>
-            Log Out
-          </Button>
+          <br />
+          <br />
+          <Button variant="primary" type="submit" onClick={this.logOut}style={{color: "white"}} variant="outline-success" size='lg'><h3>Log Out</h3> </Button>
+        </div>
         </div>
       );
     }
@@ -131,18 +136,25 @@ fetch("http://localhost:3000/api/find/login/"+this.state.userName+"&"+this.state
     else {
       content = (
         <div>
-          <form>
-            <p> Enter a username: </p>
-            <input type="text" name="userName" value={this.state.userName} pattern="[A-Za-z0-9]+" onChange={this.changeHandler}/>
-            <br/>
-            <p> Enter a password: </p>
-            <input type="password" name="password" value={this.state.password} pattern="[A-Za-z0-9]+" onChange={this.changeHandler}/>
-            <br/>
-            <Button variant="primary" type="submit" onClick={this.sendInfo}>
-              Submit
-            </Button>
-          </form>
-        </div>
+        <form>
+        <br/>
+        <div style={{color: "white"}}>
+          <h3> Enter a username: </h3>
+          </div>
+          <Form.Group>
+             <Form.Control size= 'lg' type="text" name="userName" value={this.state.userName} pattern="[A-Za-z0-9]+" onChange={this.changeHandler} placeholder="Enter Username" />  
+          </Form.Group> 
+          <br/>
+          <div style={{color: "white"}}>
+          <h3> Enter a password: </h3>
+          </div>
+          <Form.Group>
+             <Form.Control size= 'lg' type="password" name="password" value={this.state.password} pattern="[A-Za-z0-9]+" onChange={this.changeHandler} placeholder="Enter Password" />  
+          </Form.Group> 
+          <br/>
+          <Button type="submit" onClick={this.sendInfo} style={{color: "white"}} variant="outline-success" size='lg'><h3>Log in</h3></Button>
+        </form>
+      </div>
       );
     }
     return (

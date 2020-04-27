@@ -6,7 +6,7 @@ import MyLibraries from './Pages/MyLibraries';
 import Login from './Pages/Login';
 import Navbar_Homepage from './Components/Navbar_Homepage'
 import SignUp from './Pages/SignUp'
-
+import './style.css';
 import {
     BrowserRouter as Router,
     Switch,
@@ -44,12 +44,13 @@ class App extends React.Component{
     render()
     {
         return(
-            <div >
+            <div className='App'>
                 <Navbar_Homepage />
                 <Router>
                         <div className="container-fluid text-center">
                             <div className="row justify-content-center">
                                 <Switch>
+                                <Route exact path="/" component={HomePage} />
                                 <Route path="/home" component={HomePage} />
                                 <Route path="/login" component={Login} />
                                 <Route path="/library" component={MyLibraries} />

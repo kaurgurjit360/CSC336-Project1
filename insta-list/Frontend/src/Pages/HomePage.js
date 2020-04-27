@@ -79,29 +79,34 @@ fetch("http://localhost:3000/api/newlikesong", requestOptions)
 
 render() {
     return (
-    <div>
-     <br/>
-     <Form.Group>
-            <Form.Control value ={this.state.search} onChange={this.handleChange} size="lg" type="text" placeholder="Search Songs" />
-    </Form.Group>
-    {/* Below we are mapping through the filtered songs and as we map through them, we are adding them to the LIST. Next to each item in the list we add a dropdown button */}
-    <ListGroup>
-        {
-            this.findSongs() ?
-           this.findSongs().map(song => {
-           return  <ListGroup.Item >{song.song_name }{
-
-             <Button id={song.id} type="button" onClick={this.clickHandler}>
-               Like Song
-             </Button>
-         
-           }
-                    </ListGroup.Item>
-           }) : <strong >SEARCH A SONG</strong>
-        }
-    </ListGroup>
+        <div>
+        <br/>
+        <br/>
+        <br/>
+       <div style={{color: "white"}}>
+       <br/>
+             <h1> Search a song </h1>
+       </div>
+        <Form.Group>
+               <Form.Control value ={this.state.search} onChange={this.handleChange} size="lg" type="text" placeholder="Search Songs" />
+       </Form.Group>
+       {/* Below we are mapping through the filtered songs and as we map through them, we are adding them to the LIST. Next to each item in the list we add a dropdown button */}
+       <ListGroup>
+           {
+               this.findSongs() ?
+              this.findSongs().map(song => {
+              return  <ListGroup.Item >{song.song_name }{
    
-    </div>
+                <Button id={song.id} type="button" onClick={this.clickHandler}>
+                  Like Song
+                </Button>
+            
+              }
+               </ListGroup.Item>
+              }) : <h1 > </h1>
+           }
+       </ListGroup>
+       </div>   
     );
 }
 }
