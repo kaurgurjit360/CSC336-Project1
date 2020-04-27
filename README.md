@@ -51,8 +51,9 @@ To verify that the application works,
 
 ## Bugs
 
-#1. As the primary keys are set to autoincrement, its best not to set certain value to the primary key.
-#2. Sometimes, after sign up,and loading the login page will load into welcome page with wrong name, if that happens please log out and re log in again.
+1. As the primary keys are set to autoincrement, its best not to set certain value to the primary key.
+
+2. Sometimes, after sign up,and loading the login page will load into welcome page with wrong name, if that happens please log out and re log in again.
 
 ## Notes
 Next steps for InstaList would be to allow users to be able to search for the playlists of other registered users and see their contents. We also would like users to be able to like the playlists of other users, and create multiple eprsonal playlists and be able to name them.
