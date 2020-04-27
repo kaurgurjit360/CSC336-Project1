@@ -50,6 +50,7 @@ class App extends React.Component{
                         <div className="container-fluid text-center">
                             <div className="row justify-content-center">
                                 <Switch>
+                                <Route exact path="/" component={HomePage} />
                                 <Route path="/home" component={HomePage} />
                                 <Route path="/login" component={Login} />
                                 <Route path="/library" component={MyLibraries} />

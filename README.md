@@ -27,7 +27,24 @@ To use the software for this application, first clone the git repository into yo
 
 The ideal flow of the application would consist of first signing up on the application (or logging in if user is already registered), then heading to the home page to search for songs. As users find song titles they are into, they can click on the "Like Song" button to add them to their personal playlist. When they head to the "My Library" page, they will see all their liked songs there, and be able to unlike a song if they want to.
 
-To verify that the application works, (...).
+To verify that the application works, 
+
+#1. Clone the project
+#2. Go to the project directory ("insta-list")
+#3. Go to "Backend" folder ( to start backend )
+#4. Enter "npm install"
+#5. Start HeidiSQL, create new datbase named "instalist_db", 
+#6. Enter "npm run dev" or "npm start dev" (if one of them does not work, try the other) to set up the database
+#7. Enter "npm run seed" to populate the database. If you want to see the data in the tables, use HeidiSQL.
+#8. Go to "Frontend" folder ( to start web application)
+#9. Enter "npm install"
+#10. Enter "npm start"
+
+## Bugs
+
+#1. As the primary keys are set to autoincrement, its best not to set certain value to the primary key.
+#2. Sometimes, after sign up,and loading the login page will load into welcome page with wrong name, if that happens please log out and re log in again.
+
 
 ## Resources
 
